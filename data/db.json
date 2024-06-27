@@ -1,26 +1,5 @@
 {
   "data": [
-    {
-      "id": "52bd",
-      "firstname": "Kolla",
-      "lastname": "Rao",
-      "username": "dfadfa",
-      "dob": "2024-06-07",
-      "gender": "Female",
-      "email": "madhavaraokolla2@gmail.com",
-      "password": "asdf",
-      "confirmpassword": "asdf"
-    },
-    {
-      "id": "c386",
-      "firstname": "Kolla",
-      "lastname": "Rao",
-      "username": "Madhav",
-      "dob": "2002-06-16",
-      "gender": "Male",
-      "email": "madhavaraokolla2@gmail.com",
-      "password": "asdf",
-      "confirmpassword": "asdf"
-    }
+    
   ]
 }
