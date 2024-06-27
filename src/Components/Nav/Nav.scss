@@ -1,0 +1,30 @@
+.navbar {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #f2f2f2;
+    background-color: lightblue;
+  }
+
+  h1{
+    color: #f1356d;
+    font-size: 2rem;
+  }
+ 
+ .links {
+    margin-left: auto;
+  }
+
+  a {
+    margin-left: 1rem;
+    text-decoration: none;
+    padding: 6px;
+    font-size: 1.5rem;
+    color: black;
+
+    &:hover{
+    color: #f1356d;
+    }
+
+  }
+  
