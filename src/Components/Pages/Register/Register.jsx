@@ -1,10 +1,9 @@
 import React from 'react';
-import './Signup.scss';
+import './Register.scss';
 import { useState } from 'react';
-import { Link
+import { Link,useNavigate } from 'react-router-dom';
 
- } from 'react-router-dom';
-const Signup = () => {
+const Register = () => {
 
   const [userdata, setUserData] = useState({
     firstname: '',
@@ -17,12 +16,12 @@ const Signup = () => {
     confirmpassword: ''
   });
 
+  const navigate=useNavigate();
   const handleChange = (e) => {
     setUserData({
       ...userdata, [e.target.name]: e.target.value
     });
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (userdata.password !== userdata.confirmpassword) {
@@ -30,15 +29,39 @@ const Signup = () => {
       return;
     }
     try {
-      const response = await fetch('http://localhost:7000/data', {
+      const response = await fetch('http://localhost:7000/data');
+      const users = await response.json();
+      console.log(users);
+      let userExists = false;
+      for (let i=0;i<users.length;i++) {
+        if (users[i].email === userdata.email) {
+          userExists = true;
+          break;
+        }
+      }
+      if (userExists) {
+        alert('User already exists. Please try with a new email.');
+        setUserData({
+          firstname: '',
+          lastname: '',
+          username: '',
+          dob: '',
+          gender: '',
+          email: '',
+          password: '',
+          confirmpassword: ''
+        });
+        return;
+      }
+  
+      await fetch('http://localhost:7000/data', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(userdata)
       });
-      const res = await response.json();
-      console.log(res);
+  
       setUserData({
         firstname: '',
         lastname: '',
@@ -48,13 +71,13 @@ const Signup = () => {
         email: '',
         password: '',
         confirmpassword: ''
-      })
-    }
-    catch (err) {
+      });
+      navigate('/login');
+    } catch (err) {
       console.log("Error is:", err);
     }
-  }
-
+  };
+  
   return (
     <div className="signup">
       <form className="signup-form" onSubmit={handleSubmit}>
@@ -102,9 +125,9 @@ const Signup = () => {
           <button className="submit">Submit</button>
         </div>
       </form>
-      <Link to="/signin">Existing User !</Link>
+      <Link to="/login">Existing User !</Link>
     </div>
   )
 }
 
-export default Signup;
+export default Register;
