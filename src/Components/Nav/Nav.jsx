@@ -7,7 +7,7 @@ const Nav = () => {
     <h1>Landing page</h1>
     <div className="links">
         <Link to="/">Home</Link>
-        <Link to="/login">Login</Link>
+        {/* <Link to="/login">Login</Link> */}
         <Link to="/register">Sign up</Link>
     </div>
    </nav>
