@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Login.scss';
+import { useAuth } from '../../Components/Auth';
 
 const Login = () => {
 
   const [data, setData] = useState({username: '',password: ''});
+  const {login} = useAuth();
   const navigate = useNavigate();
+
   const handleChange = (e) => {
     setData({...data, [e.target.name]: e.target.value});
   };
@@ -22,6 +25,7 @@ const Login = () => {
               setData({ username:'',password:'' })
               console.log(users[i]);
               alert("Login successful!");
+              login();
               navigate('/')
               break;
             }

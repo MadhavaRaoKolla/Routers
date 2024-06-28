@@ -2,6 +2,7 @@ import React from 'react';
 import './Register.scss';
 import { useState } from 'react';
 import { Link,useNavigate } from 'react-router-dom';
+import { useAuth } from '../../Components/Auth';
 
 const Register = () => {
 
@@ -16,7 +17,9 @@ const Register = () => {
     confirmpassword: ''
   });
 
+  const {login} = useAuth();
   const navigate=useNavigate();
+
   const handleChange = (e) => {
     setUserData({
       ...userdata, [e.target.name]: e.target.value
@@ -73,7 +76,8 @@ const Register = () => {
         password: '',
         confirmpassword: ''
       });
-      navigate('/login');
+      login();
+      navigate('/');
     } catch (err) {
       console.log("Error is:", err);
     }
