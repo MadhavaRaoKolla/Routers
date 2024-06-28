@@ -1,22 +1,14 @@
 import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import './Login.scss';
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
 
-  const [data, setData] = useState({
-    username: '',
-    password: ''
-  });
-
-  const handleChange = (e) => {
-    setData({
-      ...data, [e.target.name]: e.target.value
-    });
-  };
-
+  const [data, setData] = useState({username: '',password: ''});
   const navigate = useNavigate();
+  const handleChange = (e) => {
+    setData({...data, [e.target.name]: e.target.value});
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
