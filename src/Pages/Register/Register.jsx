@@ -2,9 +2,8 @@ import React from 'react';
 import './Register.scss';
 import { useState } from 'react';
 import { Link,useNavigate } from 'react-router-dom';
-// import { useAuth } from '../../Components/Auth';
 import { useContext } from 'react';
-import { AuthContext } from '../../Components/Auth';
+import { AuthContext } from '../../Context/Auth';
 
 const Register = () => {
 
