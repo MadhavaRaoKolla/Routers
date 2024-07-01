@@ -2,8 +2,7 @@ import React from 'react';
 import './Components/App.scss';
 import Nav from './Components/Nav/Nav';
 import Approutes from './Components/Approutes';
-import { AuthProvider } from './Components/Auth';
-import { BrowserRouter as Router } from 'react-router-dom';
+import  AuthProvider  from './Components/Auth';
 
 const App = () => {
   return (
