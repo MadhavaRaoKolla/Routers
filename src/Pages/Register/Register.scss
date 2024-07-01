@@ -36,10 +36,15 @@
         border-radius: 5px;
         font-size: 1rem;
         background-color: #f2f2f2;
-        
+        // color: black;
+
         &.error::placeholder {
           color: red;
         }
+      }
+      input[type="text"],input[type="password"],
+      input[type="email"]{
+        color: black;
       }
 
       .genders{
