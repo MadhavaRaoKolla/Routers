@@ -5,8 +5,7 @@ import Login from '../Pages/Login/Login'
 import Register from '../Pages/Register/Register'
 import Error from '../Pages/Error/Error'
 // import { useAuth } from './Auth'
-import { AuthContext } from './Auth'
-
+import { AuthContext } from '../Context/Auth'
 const Approutes = () => {
     
     // const {isAuth} = useAuth();

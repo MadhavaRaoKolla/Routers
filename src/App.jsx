@@ -2,7 +2,7 @@ import React from 'react';
 import './Components/App.scss';
 import Nav from './Components/Nav/Nav';
 import Approutes from './Components/Approutes';
-import  AuthProvider  from './Components/Auth';
+import  AuthProvider  from './Context/Auth';
 
 const App = () => {
   return (

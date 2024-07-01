@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Login.scss';
-// import { useAuth } from '../../Components/Auth';
 import { useContext } from 'react';
-import { AuthContext } from '../../Components/Auth';
+import { AuthContext } from '../../Context/Auth';
 
 const Login = () => {
 
