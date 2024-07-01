@@ -36,6 +36,10 @@
         border-radius: 5px;
         font-size: 1rem;
         background-color: #f2f2f2;
+        
+        &.error::placeholder {
+          color: red;
+        }
       }
 
       .genders{
@@ -43,6 +47,17 @@
         font-size: 1.2rem;
         justify-content: space-around;
         width: 15rem;
+
+        .radio{
+          color: red;
+        }
+      }
+      
+      .error{
+        font-size: 1rem;
+        text-align: center;
+        font-weight: 500;
+        color: red;
       }
     }
 
