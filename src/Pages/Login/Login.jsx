@@ -15,7 +15,7 @@ const Login = () => {
 
   const validate = () => {
     let errors = {};
-    if (!data.username) errors.username = 'UserName is required';
+    if (!data.username) errors.username = 'Username is required';
     if (!data.password) errors.password = 'Password is required';
     setErrors(errors);
     return Object.keys(errors).length === 0;

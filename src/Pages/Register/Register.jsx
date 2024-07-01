@@ -133,14 +133,10 @@ const Register = () => {
           <label>Gender</label>
           <div className="genders">
             <label className={errors.gender ? 'radio' : ''}>
-              <input type="radio" name="gender" value="Male" checked={userdata.gender === 'Male'} onChange={handleChange}  
-                
-              />Male
+              <input type="radio" name="gender" value="Male" checked={userdata.gender === 'Male'} onChange={handleChange}  />Male
             </label>
             <label className={errors.gender ? 'radio' : ''}>
-              <input type="radio" name="gender" value="Female" checked={userdata.gender === 'Female'} onChange={handleChange}  
-                className={errors.gender ? 'radio-error' : ''} 
-              />Female
+              <input type="radio" name="gender" value="Female" checked={userdata.gender === 'Female'} onChange={handleChange}  />Female
             </label>
           </div>
         </div>
