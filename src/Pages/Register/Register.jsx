@@ -2,7 +2,9 @@ import React from 'react';
 import './Register.scss';
 import { useState } from 'react';
 import { Link,useNavigate } from 'react-router-dom';
-import { useAuth } from '../../Components/Auth';
+// import { useAuth } from '../../Components/Auth';
+import { useContext } from 'react';
+import { AuthContext } from '../../Components/Auth';
 
 const Register = () => {
 
@@ -17,7 +19,7 @@ const Register = () => {
     confirmpassword: ''
   });
 
-  const {login} = useAuth();
+  const {login} = useContext(AuthContext);
   const navigate=useNavigate();
 
   const handleChange = (e) => {

@@ -1,9 +1,11 @@
 import {Link,useNavigate} from 'react-router-dom'
 import './Nav.scss'
-import { useAuth } from '../Auth'
+// import { useAuth } from '../Auth'
+import { useContext } from 'react';
+import { AuthContext } from '../Auth';
 
 const Nav = () => {
-  const {isAuth,logout} = useAuth();
+  const {isAuth,logout} = useContext(AuthContext);
   const navigate=useNavigate();
   const handleLogout = () => {
     logout();
