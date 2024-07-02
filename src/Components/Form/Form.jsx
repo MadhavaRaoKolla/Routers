@@ -33,7 +33,7 @@ const Form = () => {
       const response = await fetch('http://localhost:3000/data',{
         method:'POST',
         headers: {'Content-Type': 'application/json'},
-        body:JSON.stringify({...formData,account_id:id}) 
+        body:JSON.stringify({...formData,user_id:id}) 
       });
 
       if(!response.ok)  throw new Error("Updating failed...");
