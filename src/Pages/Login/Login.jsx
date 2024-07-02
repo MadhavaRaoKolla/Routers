@@ -51,23 +51,11 @@ const Login = () => {
       <form className="form" onSubmit={handleSubmit}>
         <h1>Login</h1>
         <label>UserName :</label>
-        <input 
-          type="text" 
-          name='username' 
-          value={data.username} 
-          onChange={handleChange} 
-          className={errors.username ? 'error' : ''}
-          placeholder={errors.username ? errors.username : ''}
-        />
+        <input type="text" name='username' value={data.username} onChange={handleChange} 
+         className={errors.username ? 'error' : ''} placeholder={errors.username ? errors.username : ''} />
         <label>Password :</label>
-        <input 
-          type="password" 
-          name='password' 
-          value={data.password} 
-          onChange={handleChange} 
-          className={errors.password ? 'error' : ''}
-          placeholder={errors.password ? errors.password : ''}
-        />
+        <input type="password" name='password' value={data.password} onChange={handleChange} 
+          className={errors.password ? 'error' : ''}placeholder={errors.password ? errors.password : ''} />
         <div className='button'>
           <button className="submit">Submit</button>
         </div>

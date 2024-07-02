@@ -80,6 +80,7 @@ const Register = () => {
         body: JSON.stringify(userdata)
       });
 
+      login(userdata);
       setUserData({
         firstname: '',
         lastname: '',
@@ -90,7 +91,6 @@ const Register = () => {
         password: '',
         confirmpassword: ''
       });
-      login();
       navigate('/');
     } catch (err) {
       console.log("Error is:", err);

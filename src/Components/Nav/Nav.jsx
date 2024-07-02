@@ -15,7 +15,10 @@ const Nav = () => {
     <h1>Landing page</h1>
     <div className="links">
         {isAuth ? 
-          (<> <Link to='/' >Home</Link> <button onClick={handleLogout}>Logout</button></>) :
+          ( <> 
+              <Link to='/' >Home</Link>
+              <Link to='/form'>Form</Link>
+              <button onClick={handleLogout}>Logout</button></> ) :
           (<> <Link to='/register'>Sign up</Link> </>)
         }
     </div>
