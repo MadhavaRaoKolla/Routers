@@ -34,7 +34,8 @@ const Login = () => {
             setData({ username:'',password:''});
             alert("Login successful!");
             login(users[i]);
-            navigate('/');
+            // navigate('/');
+            navigate(`/`)
             break;
           }
         }

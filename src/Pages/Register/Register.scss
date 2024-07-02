@@ -7,6 +7,7 @@
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(7, 7, 7, 0.5);
   border: 1px solid #bfbbbb;
+  background-color: white;
 
   .signup-form{
     display: flex;
@@ -73,7 +74,7 @@
       border: none;
       background-color: #3a7bd5;
       color: white;
-      transition: transform 0.3s ease;
+      transition: transform 0.2s ease;
       cursor: pointer;
       &:hover{
              transform: scale(1.1);
