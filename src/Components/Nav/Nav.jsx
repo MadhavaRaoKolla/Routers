@@ -13,7 +13,7 @@ const Nav = () => {
   }
   return (
    <nav className="navbar">
-    <h1>Landing page</h1>
+    <h1>Routes</h1>
     <div className="links">
         {user ? 
           ( <> 

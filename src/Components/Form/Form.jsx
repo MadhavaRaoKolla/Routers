@@ -28,16 +28,15 @@ const Form = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const id = JSON.parse(localStorage.getItem('user')).id;
     try{
       const response = await fetch('http://localhost:3000/data',{
         method:'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(formData)
+        body:JSON.stringify({...formData,account_id:id}) 
       });
 
-      if(!response.ok){
-        throw new Error("Updating failed...")
-      }
+      if(!response.ok)  throw new Error("Updating failed...");
       const newData = await response.json();
       setData([...data,newData]);
       setFormData({
@@ -66,8 +65,8 @@ const Form = () => {
   }
 
   return (
-    <>
-    <form className='data' onSubmit={handleSubmit}>
+    <div >
+      <form className='data' onSubmit={handleSubmit}>
         <label>First Name</label>
         <input type="text" name='firstname' value={formData.firstname} onChange={handleChange} />
         <label>Last Name</label>
@@ -85,8 +84,8 @@ const Form = () => {
         <textarea name="about" value={formData.about} onChange={handleChange} required></textarea>
         <input type="submit" />
       </form>
-      {data && <Item data={data} handleDelete={handleDelete}/>}
-      </>
+        {data && <Item data={data} handleDelete={handleDelete}/>}
+    </div>
   )
 }
 
