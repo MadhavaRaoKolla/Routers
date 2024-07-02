@@ -6,8 +6,9 @@ const Home = () => {
   
   return (
   <div className='home'>
-    Hi {user && user.firstname}
-    <p>Welcome to home page</p>
+    <p>Welcome to home page 😇</p>
+    Hi {user && user.firstname} 🤝
+    <p>Hope you are doing well..!🙌 </p>
   </div>
 )
 }
