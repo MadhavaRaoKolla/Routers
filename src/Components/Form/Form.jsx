@@ -38,6 +38,8 @@ const Form = () => {
       if(!response.ok){
         throw new Error("Updating failed...")
       }
+      const newData = await response.json();
+      setData([...data,newData]);
       setFormData({
         firstname: '',
         lastname: '',

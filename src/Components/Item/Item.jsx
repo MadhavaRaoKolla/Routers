@@ -5,11 +5,11 @@ const Item = ({data,handleDelete}) => {
   return (
     <div>
         {data.map(item=>(
-            <div className="user-info" key={item.kid}>
+            <div className="user-info" key={item.id}>
                 <p>First Name: {item.firstname}</p>
                 <p>Last Name: {item.lastname}</p>
                 <p>About: {item.about}</p>
-                <button className="delete" onClick={()=>{handleDelete(item.id)}} >Delete</button>
+                <button className="delete" onClick={()=>{handleDelete(item.id)}}>Delete</button>
             </div>
         ))}
     </div>

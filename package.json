@@ -4,12 +4,13 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "server": "npx json-server --watch data/db.json --port 7000",
+    "server1": "npx json-server --watch data/db.json --port 7000",
+    "server2":"npx json-server --watch data/form.json --port 3000",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "start": "concurrently \"npm run server\" \"npm run dev\""
+    "start": "concurrently \"npm run server1\" \"npm run server2\" \"npm run dev\" "
   },
   "dependencies": {
     "concurrently": "^8.2.2",

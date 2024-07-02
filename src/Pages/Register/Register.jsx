@@ -42,16 +42,13 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!validate()) {
-      return;
-    }
+    if (!validate()) return;
 
     try {
       const response = await fetch('http://localhost:7000/data');
       const users = await response.json();
-      console.log(users);
       let userExists = false;
-      for (let i = 0; i < users.length; i++) {
+      for (let i=0; i<users.length; i++) {
         if (users[i].email === userdata.email) {
           userExists = true;
           break;

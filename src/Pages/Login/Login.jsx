@@ -28,10 +28,10 @@ const Login = () => {
       .then(res => res.json())
       .then(users => {
         let userExists = false;
-        for (let i = 0; i < users.length; i++) {
-          if (users[i].username === data.username && users[i].password === data.password) {
+        for (let i=0; i<users.length; i++) {
+          if(users[i].username === data.username && users[i].password === data.password) {
             userExists = true;
-            setData({ username: '', password: '' });
+            setData({ username:'',password:''});
             alert("Login successful!");
             login(users[i]);
             navigate('/');

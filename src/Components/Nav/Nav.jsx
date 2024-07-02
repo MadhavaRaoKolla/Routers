@@ -4,7 +4,8 @@ import { useContext } from 'react';
 import { AuthContext } from '../../Context/Auth';
 
 const Nav = () => {
-  const {isAuth,logout} = useContext(AuthContext);
+  const {logout} = useContext(AuthContext);
+  const user = JSON.parse(localStorage.getItem('user'));
   const navigate=useNavigate();
   const handleLogout = () => {
     logout();
@@ -14,7 +15,7 @@ const Nav = () => {
    <nav className="navbar">
     <h1>Landing page</h1>
     <div className="links">
-        {isAuth ? 
+        {user ? 
           ( <> 
               <Link to='/' >Home</Link>
               <Link to='/form'>Form</Link>
