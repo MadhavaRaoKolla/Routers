@@ -1,15 +1,15 @@
 {
   "data": [
     {
-      "id": "1a9a",
-      "firstname": "sachin",
-      "lastname": "tendulkar ",
-      "username": "madhav",
-      "dob": "2002-01-06",
+      "id": "18d2",
+      "firstname": "madhav",
+      "lastname": "kolla",
+      "username": "f",
+      "dob": "2002-06-16",
       "gender": "Male",
       "email": "madhavaraokolla2@gmail.com",
-      "password": "9866",
-      "confirmpassword": "9866"
+      "password": "aa",
+      "confirmpassword": "aa"
     }
   ]
 }
