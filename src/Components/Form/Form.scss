@@ -1,55 +1,70 @@
-.data {
-    background:linear-gradient(300deg,white,lightblue);
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 5px 10px rgba(7, 7, 7, 0.5);
-    width: 30rem;
-    display: flex;
-    flex-direction: column;
-    margin: 2rem;
+.student{
+  display: flex;
+  margin: 2rem;
+  .data {
+      p{
+        font-size: 1.5rem;
+        color: #f1356d;
+        font-weight: bold;
+        padding-bottom: 0.7rem;
+        text-align: center;
+      }
 
-    label {
-      margin-bottom: 0.5rem;
-      font-size: 1.2rem;
-    }
-
-    div {
-      margin-bottom: 0.3rem;
-      font-size: 1.2rem;
-    }
-
-    input[type="text"],input[type="email"],
-    textarea {
-      padding: 0.5rem;
-      margin-bottom: 1rem;
-      border: 1px solid #9a9898;
-      border-radius: 5px;
-      font-size: 1rem;
-    }
-
-    input[type="radio"] {
-      margin-right: 0.5rem;
-    }
-
-    input[type="submit"] {
-        padding: 0.5rem;
-        border: none;
-        border-radius: 10px;
+      background:linear-gradient(300deg,white,lightblue);
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 10px rgba(7, 7, 7, 0.5);
+      width: 30rem;
+      height: 35rem;
+      display: flex;
+      flex-direction: column;
+      margin: 0rem 1rem;
+  
+      label {
+        margin-bottom: 0.3rem;
+        font-size: 1.2rem;
+      }
+  
+      div {
+        margin-bottom: 0.2rem;
+        font-size: 1.2rem;
+      }
+  
+      input[type="text"],input[type="email"],
+      textarea {
+        padding: 0.4rem;
+        margin-bottom: 0.7rem;
+        border: 1px solid #ced4da;
+        background-color: #f8f9fa;
+        border-radius: 5px;
         font-size: 1rem;
-        background-color: #3a7bd5;
-        color: white;
-        cursor: pointer;
-        width: 5rem;
-        margin-left: 40%;
-        transition: transform 0.3s ease;
-
-        &:hover{
-            transform: scale((1.1));
-        }
+      }
+  
+      input[type="radio"] {
+        margin-right: 0.3rem;
+      }
+  
+      input[type="submit"] {
+          padding: 0.5rem;
+          border: none;
+          border-radius: 10px;
+          font-size: 1rem;
+          border: 1px solid #ced4da;
+          background-color: #3a7bd5;
+          color: white;
+          cursor: pointer;
+          width: 5rem;
+          margin-left: 40%;
+          transition: transform 0.3s ease;
+  
+          &:hover{
+              transform: scale((1.1));
+          }
+      }
+  
+      textarea {
+        resize: vertical;
+        height: 5rem;
+      }
     }
-
-    textarea {
-      resize: vertical;
-      height: 6.25rem;
-    }
-  }
+}

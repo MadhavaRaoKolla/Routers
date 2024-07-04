@@ -65,8 +65,9 @@ const Form = () => {
   }
 
   return (
-    <div >
+    <div className='student'>
       <form className='data' onSubmit={handleSubmit}>
+      <p>Enter your details here:</p>
         <label>First Name</label>
         <input type="text" name='firstname' value={formData.firstname} onChange={handleChange} />
         <label>Last Name</label>
@@ -84,7 +85,9 @@ const Form = () => {
         <textarea name="about" value={formData.about} onChange={handleChange} required></textarea>
         <input type="submit" />
       </form>
+      <div className="item">
         {data && <Item data={data} handleDelete={handleDelete}/>}
+      </div>
     </div>
   )
 }

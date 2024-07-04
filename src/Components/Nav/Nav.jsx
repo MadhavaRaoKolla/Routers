@@ -19,6 +19,7 @@ const Nav = () => {
           ( <> 
               <Link to='/' >Home</Link>
               <Link to='/form'>Form</Link>
+              <Link to='/profile'>Profile</Link>
               <button onClick={handleLogout}>Logout</button></> ) :
           (<> <Link to='/register'>Sign up</Link> </>)
         }
