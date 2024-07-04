@@ -42,6 +42,34 @@
     }
   }
 
-  
-
-  
+@media(max-width:600px){
+  .navbar{
+    height: 4rem;
+    padding: 0.5rem;
+    h1{
+      font-size: 1.7rem;
+    }
+    button,a{
+      font-size: 1.2rem;
+    }
+    button{
+      padding: 0 5px;
+    }
+    a{
+      margin-left: 0.5rem;
+      padding: 1px;
+    }
+  }
+}
+@media(max-width:375px){
+  .navbar{
+    height: 3rem;
+    padding: 0;
+    h1{
+      font-size: 1.3rem;
+    }
+    button,a{
+      font-size: 1rem;
+    }
+  }
+}

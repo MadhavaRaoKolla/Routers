@@ -67,7 +67,7 @@ const Profile = () => {
                 <div className="left">
                     <p>Hi {user.firstname}</p>
                     <p>Here you can view your profile.</p>
-                    <p>Edit your details also..!</p> 
+                    <p>And can edit your details also..!</p> 
                 </div>
                 <div className="right">
                     <form className='forms'>
