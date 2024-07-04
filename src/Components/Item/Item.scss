@@ -1,9 +1,9 @@
 .user-info {
-    background: linear-gradient(300deg,rgb(233, 223, 145),rgb(177, 214, 240));    
-    padding: 1.5rem;
+    background: linear-gradient(300deg,rgb(255, 255, 255),rgb(177, 214, 240));    
+    padding: 1rem;
     border-radius: 5px;
     box-shadow: 0 5px 10px rgba(7, 7, 7, 0.5);
-    width: 37.5rem;
+    width: 30rem;
     margin-bottom: 1rem;
     transition: transform 0.3s ease;
 
@@ -22,7 +22,7 @@
       box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
       transition: transform 0.2s ease;
       border: none;
-      background-color: rgb(242, 87, 87);
+      background-color:#ee5161;
       font-size: 1rem;
       &:hover{
         transform: scale(1.1);

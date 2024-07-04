@@ -37,6 +37,7 @@
         border-radius: 5px;
         font-size: 1rem;
         background-color: #f2f2f2;
+        color: #495057;
 
         &.error::placeholder {
           color: red;
@@ -44,7 +45,7 @@
       }
       input[type="text"],input[type="password"],
       input[type="email"]{
-        color: black;
+        color: #495057;
       }
 
       .genders{
