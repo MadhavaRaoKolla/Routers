@@ -14,7 +14,8 @@ const Form = () => {
 
   //fetching data to display in same page
   useEffect( ()=> {
-    fetch('http://localhost:3000/data')
+    const id = JSON.parse(localStorage.getItem('user')).id;
+    fetch(`http://localhost:3000/data?user_id=${id}`)
     .then(res => res.json())
     .then(data => setData(data))
     .catch(err => console.log(err));
