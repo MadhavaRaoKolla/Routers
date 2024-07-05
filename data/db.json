@@ -1,3 +1,15 @@
 {
-  "data": []
+  "data": [
+    {
+      "id": "4cf3",
+      "firstname": "sachin",
+      "lastname": "tendulkar ",
+      "username": "paaji",
+      "dob": "3002-06-16",
+      "gender": "Male",
+      "email": "h@gmail.com",
+      "password": "ff",
+      "confirmpassword": "ff"
+    }
+  ]
 }

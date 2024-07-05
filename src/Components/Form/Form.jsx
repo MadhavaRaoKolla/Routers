@@ -14,7 +14,8 @@ const Form = () => {
 
   //fetching data to display in same page
   useEffect( ()=> {
-    fetch('http://localhost:3000/data')
+    const id = JSON.parse(localStorage.getItem('user')).id;
+    fetch(`http://localhost:3000/data?user_id=${id}`)
     .then(res => res.json())
     .then(data => setData(data))
     .catch(err => console.log(err));
@@ -67,7 +68,7 @@ const Form = () => {
   return (
     <div className='student'>
       <form className='data' onSubmit={handleSubmit}>
-      <p>Enter your details here:</p>
+        <p>Enter your details here:</p>
         <label>First Name</label>
         <input type="text" name='firstname' value={formData.firstname} onChange={handleChange} />
         <label>Last Name</label>
