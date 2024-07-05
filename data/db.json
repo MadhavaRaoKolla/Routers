@@ -1,3 +1,15 @@
 {
-  "data": []
+  "data": [
+    {
+      "id": "325f",
+      "firstname": "Madhav",
+      "lastname": "Kolla",
+      "username": "Madhu",
+      "dob": "2002-06-16",
+      "gender": "Male",
+      "email": "madhavaraokolla2@gmail.com",
+      "password": "asdf",
+      "confirmpassword": "asdf"
+    }
+  ]
 }

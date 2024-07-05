@@ -1,3 +1,13 @@
 {
-  "data": []
+  "data": [
+    {
+      "id": "b2a5",
+      "firstname": "Madhav",
+      "lastname": "Kolla",
+      "email": "h@gmail.com",
+      "gender": "Male",
+      "about": "Hi guys",
+      "user_id": "325f"
+    }
+  ]
 }
