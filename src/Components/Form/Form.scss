@@ -68,3 +68,50 @@
       }
     }
 }
+
+@media(max-width:1000px){
+  .student{
+    .data{
+      width: 25rem;
+    }
+  }
+}
+
+@media(max-width:850px){
+  .student{
+    .data{
+      p{
+        font-size: 1.3rem;
+      }
+      width: 20rem;
+    }
+  }
+}
+
+@media(max-width:700px){
+  .student{
+    flex-direction: column;
+    .data{
+      width: 25rem;
+    }
+  }
+}
+
+@media(max-width:450px){
+  .student{
+    flex-direction: column;
+    .data{
+      width: 20rem;
+      height: 30rem;
+      input[type="text"],input[type="email"]{
+        padding: 0.2rem 0; 
+      }
+      div{
+        font-size: 1rem;
+      }
+      input[type="submit"]{
+        margin-left: 35%;
+      }
+    }
+  }
+}

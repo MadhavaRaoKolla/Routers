@@ -30,3 +30,35 @@
       }
     }
   }
+
+  @media(max-width:1000px){
+    .user-info{
+      width: 25rem;
+    }
+  }
+
+  @media(max-width:850px){
+    .user-info{
+      width: 20rem;
+    }
+  }
+
+  @media(max-width:700px){
+    .user-info{
+      width: 25rem;
+      margin: 1rem;
+    }
+  }
+
+  @media(max-width:450px){
+    .user-info{
+      width: 20rem;
+      margin: 1rem;
+      p{
+        font-size: 1rem;
+      }
+      .delete{
+        font-size: 0.8rem;
+      }
+    }
+  }
