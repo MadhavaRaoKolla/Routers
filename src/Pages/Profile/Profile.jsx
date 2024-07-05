@@ -4,7 +4,7 @@ import { AuthContext } from '../../Context/Auth'
 import { useNavigate } from 'react-router'
 
 const Profile = () => {
-    const {user,login} = useContext(AuthContext); //local storage user
+    const {user,login,logout} = useContext(AuthContext); //local storage user
     const [updates,setUpdates]=useState({
         firstname:'',
         lastname:'',
@@ -25,7 +25,6 @@ const Profile = () => {
     };
 
     const handleSubmit = async () => {
-        e.preventDefault();
         try{
             const response = await fetch (`http://localhost:7000/data?email=${user.email}`)
             const [existingUser] = await response.json(); //array of object, existinguser is object in array
@@ -47,17 +46,40 @@ const Profile = () => {
         }
     }
 
-    const handleDelete = () => {
-        fetch(`http://localhost:7000/data/${user.id}`,{
-            method:'DELETE'
-        }).then( res => {
-            if(res.ok){console.log("deleted")}
-            else console.log("deletion failed")
-        }).catch(err => {
-            console.log("error",err)
-        })
-        navigate('/register');       
-    };
+    const handleDelete =async () => {
+
+        //deleting data of inner form
+        try {
+            const data = await fetch (`http://localhost:3000/data/?user_id=${user.id}`)
+            const userData = await data.json();
+            if(!userData) throw new Error ("Fetching Failed....")
+            for(let i=0;i<userData.length;i++){
+                try {
+                    const del= await fetch (`http://localhost:3000/data/${userData[i].id}`,{
+                      method:'DELETE',       
+                    });
+                    if(!del.ok) {throw new Error ("Deleting Failed...")}
+                } catch (error) {
+                    console.log("Error:",error)
+                }
+            }
+        } catch (error) {
+            console.log("error:",error);
+        }
+
+        //deleting user details
+        try {
+            const data = await fetch (`http://localhost:7000/data/${user.id}`,{
+                method:'DELETE',
+            })
+            if(!data.ok) throw new Error ("User deleting failed...")
+            localStorage.removeItem('user');
+            logout();
+        } catch (error) {
+            console.log("Error",error)
+        }
+        navigate('/register');
+    }
 
     if(!user) return <div>Loading...</div>;
     return (

@@ -69,15 +69,15 @@ const Register = () => {
         return;
       }
 
-      await fetch('http://localhost:7000/data', {
+      const newData = await fetch('http://localhost:7000/data', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(userdata)
       });
-
-      login(userdata);
+      const newUser = await newData.json();
+      login(newUser);
       setUserData({
         firstname: '',
         lastname: '',
