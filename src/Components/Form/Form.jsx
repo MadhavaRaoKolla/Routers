@@ -31,7 +31,7 @@ const Form = () => {
     e.preventDefault();
     const id = JSON.parse(localStorage.getItem('user')).id;
     try{
-      const response = await fetch('http://localhost:3000/data',{
+        const response = await fetch('http://localhost:3000/data',{
         method:'POST',
         headers: {'Content-Type': 'application/json'},
         body:JSON.stringify({...formData,user_id:id}) 
@@ -39,7 +39,7 @@ const Form = () => {
 
       if(!response.ok)  throw new Error("Updating failed...");
       const newData = await response.json();
-      setData([...data,newData]);
+      setData([...data,newData]); //setting new object into array of objects to display
       setFormData({
         firstname: '',
         lastname: '',

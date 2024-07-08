@@ -76,7 +76,7 @@ const Register = () => {
         },
         body: JSON.stringify(userdata)
       });
-      const newUser = await newData.json();
+      const newUser = await newData.json(); //this will have id from json server, to store in local storage
       login(newUser);
       setUserData({
         firstname: '',
