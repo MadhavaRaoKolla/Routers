@@ -43,7 +43,6 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validate()) return;
-
     try {
       const response = await fetch('http://localhost:7000/data');
       const users = await response.json();

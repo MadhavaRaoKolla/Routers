@@ -6,7 +6,7 @@
   border-radius: 10px;
   box-shadow: 0 5px 10px rgba(7, 7, 7, 0.5);
   border: 1px solid #bfbbbb;
-  background: linear-gradient(300deg, white, lightblue);
+  background: linear-gradient(-50deg,rgb(245, 246, 224),var(--color-3));
 
   .signup-form {
     display: flex;
@@ -36,7 +36,7 @@
         border: 1px solid #ccc;
         border-radius: 5px;
         font-size: 1rem;
-        background-color: #f2f2f2;
+        background-color:var(--color-1);
         color: #495057;
 
         &.error::placeholder {

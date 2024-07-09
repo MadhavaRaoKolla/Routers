@@ -11,7 +11,7 @@
     border-radius: 8px;
     box-shadow: 0 5px 10px rgba(7, 7, 7, 0.5);
     border: 1px solid #ccc;
-    background:linear-gradient(300deg,white,lightblue);
+    background:linear-gradient(300deg,white,var(--color-3));
 
     .form {
         display: flex;
@@ -31,13 +31,13 @@
 
         input[type="text"],
         input[type="password"] {
-            padding: 8px 5px;
+            padding: 5px 5px;
             margin-bottom: 0.5rem;
             border-radius: 5px;
             font-size: 1rem;
             width: 20rem;
             border: 1px solid #ced4da;
-            background-color: #f8f9fa;
+            background-color: #f1efef;
             color: #495057;;
             
             &.error::placeholder {

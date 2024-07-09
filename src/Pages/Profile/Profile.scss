@@ -6,12 +6,13 @@
     border-radius: 10px;
     min-width: 40rem;
     box-shadow: 0 5px 10px rgba(7, 7, 7, 0.5);
-    background:linear-gradient(300deg,white,lightblue);
+    background: linear-gradient(100deg,var(--color-4),var(--color-2));  
     font-weight: bold;
+    
     p{
         font-size: 1.5rem;
-        color: #f1356d;
     }
+    
     .content{
         display: flex;
         justify-content: center;    
@@ -69,12 +70,14 @@
         font-size: 1rem;
         font-weight: bold;
         transition: transform ease 0.2s;
+        color: white;
+        cursor: pointer;
         &:hover{
             transform: scale(1.1);
         }
     }
     .update{
-        background-color: rgb(138, 255, 43);
+        background-color: rgb(77, 164, 5);
     }
     .delete{
         background-color: #ee5161;

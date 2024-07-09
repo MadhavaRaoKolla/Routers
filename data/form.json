@@ -1,3 +1,13 @@
 {
-  "data": []
+  "data": [
+    {
+      "id": "772b",
+      "firstname": "Kolla",
+      "lastname": "Madhava",
+      "email": "madhavaraokolla2@gmail.com",
+      "gender": "Male",
+      "about": "afdaf",
+      "user_id": "325f"
+    }
+  ]
 }

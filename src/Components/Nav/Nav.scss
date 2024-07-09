@@ -3,13 +3,13 @@
     display: flex;
     align-items: center;
     border-bottom: 1px solid #f2f2f2;
-    background-color: black;
+    background-color: var(--color-5);  //5
     height: 4.5rem;
     width: 100%;
   }
   
   h1{
-    color: #f1356d;
+    color:black;
     font-size: 2rem;
   }
  
@@ -22,10 +22,10 @@
       border: none;
       font-size: 1.5rem;
       padding: 0 10px;
-      color: white;
+      color: black;
       
       &:hover{
-        color:#f1356d;
+        color:var(--color-6);
       }
     }
   }
@@ -35,10 +35,10 @@
     text-decoration: none;
     padding: 3px;
     font-size: 1.5rem;
-    color: white;
+    color: black;
 
     &:hover{
-    color: #f1356d;
+      color:var(--color-6);
     }
   }
 
