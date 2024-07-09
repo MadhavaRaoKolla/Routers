@@ -10,7 +10,7 @@
         text-align: center;
       }
 
-      background:linear-gradient(300deg,white,lightblue);
+      background: linear-gradient(320deg,white,var(--color-3));     
       padding: 1.5rem;
       border-radius: 10px;
       box-shadow: 0 5px 10px rgba(7, 7, 7, 0.5);
@@ -35,7 +35,7 @@
         padding: 0.4rem;
         margin-bottom: 0.7rem;
         border: 1px solid #ced4da;
-        background-color: #f8f9fa;
+        background-color:var(--color-1);
         border-radius: 5px;
         font-size: 1rem;
       }
