@@ -4,6 +4,7 @@ import { useContext } from 'react';
 import { AuthContext } from '../../Context/Auth';
 import { Themes } from '../../../Theme/Theme';
 import { ThemeContext } from '../../Context/ThemeContext';
+import Logout from '../../assets/logout.png';
 
 const Nav = () => {
   const {logout,user} = useContext(AuthContext);
@@ -29,7 +30,9 @@ const Nav = () => {
               <Link to='/' >Home</Link>
               <Link to='/form'>Form</Link>
               <Link to='/profile'>Profile</Link>
-              <button onClick={handleLogout}>Logout</button></> ) :
+              <button onClick={handleLogout}>
+                <img src={Logout} alt="Logout" />
+              </button></> ) :
           (<> <Link to='/register'>Sign up</Link> </>)
         }
         <select defaultValue={Themes[0].name} onChange={(color)=>{handleSelectChange(color)}} >
