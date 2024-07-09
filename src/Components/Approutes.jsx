@@ -9,9 +9,9 @@ import Profile from '../Pages/Profile/Profile'
 import { AuthContext } from '../Context/Auth'
 
 const Approutes = () => {
-    const {user} = useContext(AuthContext); //redirecting to home page after refresh
+    const {user,loading} = useContext(AuthContext); 
     // const user = JSON.parse(localStorage.getItem('user'));
-    
+    //routes hook should be called before any return condition implemented
     const routes = useRoutes([
         {path:'/',element: user ? <Home/> : <Navigate to="/register"/>},
         {path:'/form',element:user ? <Form/> : <Navigate to="/register"/>},
@@ -20,7 +20,10 @@ const Approutes = () => {
         {path:'/login',element:user ? <Navigate to="/"/> : <Login/>},
         {path:'*',element:<Error/>}
     ])
-
+    if(loading){
+        return <div>Loading...</div>
+    }
+   
   return (
     <>
         {routes}
