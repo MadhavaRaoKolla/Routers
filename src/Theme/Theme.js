@@ -1,6 +1,6 @@
 export const Themes = [
     {
-        name: 'orange',
+        name: 'Orange',
         colors: [
             "#fff0e4", //body background
             "#e4e4e4", //inputs background
@@ -12,7 +12,7 @@ export const Themes = [
         ]
     },
     {
-        name: 'sky',
+        name: 'Ocean',
         colors: [
             "#e0fbff",
             "#e4e4e4",
@@ -24,7 +24,7 @@ export const Themes = [
         ]
     },
     {
-        name:'greenery',
+        name:'Green',
         colors:[
             "#e5feee",
             "#e4e4e4",
@@ -36,7 +36,7 @@ export const Themes = [
           ]
     },
     {
-        name:'yellow',
+        name:'Yellow',
         colors:[
             "#ffffe2",
             "#e4e4e4",
@@ -48,7 +48,7 @@ export const Themes = [
           ]
     },
     {
-        name:'anime',
+        name:'Anime',
         colors:[
             "#FDD2FC", 
             "#e4e4e4", 
