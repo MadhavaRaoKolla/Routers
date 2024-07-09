@@ -2,9 +2,8 @@ import {Link,useNavigate} from 'react-router-dom'
 import './Nav.scss'
 import { useContext } from 'react';
 import { AuthContext } from '../../Context/Auth';
-import { Themes } from '../../../Theme/Theme';
-import { ThemeContext } from '../../Context/ThemeContext';
 import Logout from '../../assets/logout.png';
+import CustomDropdown from '../Dropdown/Dropdown';
 
 const Nav = () => {
   const {logout,user} = useContext(AuthContext);
@@ -12,13 +11,6 @@ const Nav = () => {
   const handleLogout = () => {
     logout();
     navigate('/register')
-  }
-
-  const {handleTheme} = useContext(ThemeContext); //to set theme from dropdown to state variable
-  const handleSelectChange = (event) => {
-    const selectedThemes = event.target.value;
-    const colorsArray = selectedThemes.split(',').map(color => color.trim()); //to convert into array
-    handleTheme(colorsArray)
   }
 
   return (
@@ -35,11 +27,7 @@ const Nav = () => {
               </button></> ) :
           (<> <Link to='/register'>Sign up</Link> </>)
         }
-        <select defaultValue={Themes[0].name} onChange={(color)=>{handleSelectChange(color)}} >
-          {Themes.map((theme)=>(
-            <option key={theme.name} value={theme.colors}>{theme.name}</option>
-          ) )}
-        </select>
+        <CustomDropdown/>
     </div>
    </nav>
   )

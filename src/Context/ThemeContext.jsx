@@ -1,11 +1,11 @@
 import React,{createContext, useState,useEffect} from 'react';
-import { Themes } from '../../Theme/Theme';
+import { Themes } from '../Theme/Theme';
 
 export const ThemeContext = createContext()
 
 const ThemeProvider = ({children}) => {
 
-const [theme,setTheme] = useState(Themes[0].colors) //theme will be array of colors
+const [theme,setTheme] = useState(Themes[0].colors) 
 const handleTheme = (colors) => { setTheme(colors) }
   
 useEffect(() => {

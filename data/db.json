@@ -1,15 +1,15 @@
 {
   "data": [
     {
-      "id": "29b2",
-      "firstname": "Kolla",
-      "lastname": "Madhava",
+      "id": "3a45",
+      "firstname": "Madhav",
+      "lastname": "Kolla",
       "username": "Madhu",
       "dob": "2002-06-16",
       "gender": "Male",
       "email": "madhavaraokolla2@gmail.com",
-      "password": "$2a$10$hukvzBMZ2MytsIi2uLCwqe8vbYI4yha8ZvHWs.xbr3NQqSRNRv//G",
-      "confirmpassword": "$2a$10$hukvzBMZ2MytsIi2uLCwqe8vbYI4yha8ZvHWs.xbr3NQqSRNRv//G"
+      "password": "$2a$10$NitBRp1BGtshogfFEJ2T7.Zw4h/H3.2eLLsQ.7ztB0wwOXCAQ3yVe",
+      "confirmpassword": "$2a$10$NitBRp1BGtshogfFEJ2T7.Zw4h/H3.2eLLsQ.7ztB0wwOXCAQ3yVe"
     }
   ]
 }
