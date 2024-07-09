@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Login.scss';
 import { AuthContext } from '../../Context/Auth';
+import bcrypt from 'bcryptjs';
 
 const Login = () => {
   const [errors, setErrors] = useState({});
@@ -29,14 +30,18 @@ const Login = () => {
       .then(users => {
         let userExists = false;
         for (let i=0; i<users.length; i++) {
-          if(users[i].username === data.username && users[i].password === data.password) {
-            userExists = true;
-            setData({ username:'',password:''});
-            alert("Login successful!");
-            login(users[i]);
-            navigate(`/`)
-            break;
-          }
+          // if(users[i].username === data.username && users[i].password === data.password) {
+          if(users[i].username === data.username){
+            const isMatch = bcrypt.compare(data.password,users[i].password)
+              if(isMatch){
+                userExists = true;
+                setData({ username:'',password:''});
+                alert("Login successful!");
+                login(users[i]);
+                navigate(`/`)
+                break;
+              }
+            }
         }
         if (!userExists) {
           setData({ username: '', password: '' });

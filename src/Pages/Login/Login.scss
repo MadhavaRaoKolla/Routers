@@ -11,7 +11,7 @@
     border-radius: 8px;
     box-shadow: 0 5px 10px rgba(7, 7, 7, 0.5);
     border: 1px solid #ccc;
-    background:linear-gradient(300deg,white,var(--color-3));
+    background-color:var(--color-3);
 
     .form {
         display: flex;
@@ -74,7 +74,7 @@
         font-size: 1.2rem;
         color: black;
         &:hover{
-            color: #f1356d;
+            color: rgb(238, 33, 33);
         }
     }
 }

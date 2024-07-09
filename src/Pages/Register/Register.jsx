@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import './Register.scss';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/Auth';
+import bcrypt from 'bcryptjs';
 
 const Register = () => {
   const [userdata, setUserData] = useState({
@@ -68,14 +69,17 @@ const Register = () => {
         return;
       }
 
+      const hashedPassword = await bcrypt.hash(userdata.password,10);
+      const newUserData = {...userdata,password:hashedPassword,confirmpassword:hashedPassword}
+
       const newData = await fetch('http://localhost:7000/data', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(userdata)
+        body: JSON.stringify(newUserData)
       });
-      const newUser = await newData.json(); //this will have id from json server, to store in local storage
+      const newUser = await newData.json(); 
       login(newUser);
       setUserData({
         firstname: '',

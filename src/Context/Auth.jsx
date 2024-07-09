@@ -10,8 +10,8 @@ const AuthProvider = ({children}) => {
     const storedUser = localStorage.getItem('user');
     if(storedUser){
       setUser(JSON.parse(storedUser));
-      setLoading(false);
     }
+    setLoading(false);
   },[])
   
   const login = (userData) => {
