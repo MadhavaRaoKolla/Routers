@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import './Login.scss';
 import { AuthContext } from '../../Context/Auth';
 import bcrypt from 'bcryptjs';
+import { Loginbox,Button } from '../../Components/StyledComponents/Loginbox';
 
 const Login = () => {
   const [errors, setErrors] = useState({});
@@ -52,7 +53,7 @@ const Login = () => {
   };
 
   return (
-    <div className="login">
+    <Loginbox className='login'>
       <form className="form" onSubmit={handleSubmit}>
         <h1>Login</h1>
         <label>UserName :</label>
@@ -62,11 +63,11 @@ const Login = () => {
         <input type="password" name='password' value={data.password} onChange={handleChange} 
           className={errors.password ? 'error' : ''}placeholder={errors.password ? errors.password : ''} />
         <div className='button'>
-          <button className="submit">Submit</button>
+          <Button>Submit</Button>
         </div>
       </form>
       <Link to="/register">Don't have an account? Let's Signup</Link>
-    </div>
+      </Loginbox>
   );
 }
 

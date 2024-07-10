@@ -4,6 +4,7 @@ import { useContext } from 'react';
 import { AuthContext } from '../../Context/Auth';
 import Logout from '../../assets/logout.png';
 import CustomDropdown from '../Dropdown/Dropdown';
+import { Navbar,Button, Image} from '../StyledComponents/Navbar';
 
 const Nav = () => {
   const {logout,user} = useContext(AuthContext);
@@ -14,7 +15,7 @@ const Nav = () => {
   }
 
   return (
-   <nav className="navbar">
+   <Navbar className='navbar'>
     <h1>InputForm</h1>
     <div className="links">
         {user ? 
@@ -22,14 +23,15 @@ const Nav = () => {
               <Link to='/' >Home</Link>
               <Link to='/form'>Form</Link>
               <Link to='/profile'>Profile</Link>
-              <button onClick={handleLogout}>
-                <img src={Logout} alt="Logout" />
-              </button></> ) :
+              <Button onClick={handleLogout}>
+                <Image src={Logout} alt='Logout'/>
+              </Button>
+            </> ) :
           (<> <Link to='/register'>Sign up</Link> </>)
         }
         <CustomDropdown/>
     </div>
-   </nav>
+    </Navbar>
   )
 }
 
