@@ -1,3 +1,13 @@
 {
-  "data": []
+  "data": [
+    {
+      "id": "6cd2",
+      "firstname": "Madhav",
+      "lastname": "Kolla",
+      "email": "madhavaraokolla2@gmail.com",
+      "gender": "Male",
+      "about": "Hey just checking....!",
+      "user_id": "3a45"
+    }
+  ]
 }

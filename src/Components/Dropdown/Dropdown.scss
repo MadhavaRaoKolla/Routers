@@ -4,30 +4,32 @@
     .button {
       background-color: var(--color-0);
       padding: 2px 5px;
+      border: 1px solid var(--color-7);
       cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 2px;
+      gap: 5px;
       font-size: 1rem;
       border-radius: 5px;
+      color: var(--color-7);
     }
   
     .dropdown-content {
       position: absolute;
       background-color: var(--color-0);
-      border: 1px solid black;
+      border: 1px solid var(--color-7);
       border-bottom: none;
 
       .option {
         padding: 2px 2px;
         cursor: pointer;
-        border-bottom: 1px solid black;
+        border-bottom: 1px solid var(--color-7);
         display: flex;
         align-items: center;
         gap: 2px;
-  
+        color: var(--color-7);
         &:hover {
-          background-color: #d9d5d5;
+          background-color: #aca6a6;
         }
       }
     }
@@ -36,7 +38,7 @@
       width: 12px;
       height: 12px;
       border-radius: 50%;
-      border: 1px solid black;
+      border: 1px solid var(--color-7);
       background-color: var(--color-5);
     }
   }
