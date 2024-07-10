@@ -5,10 +5,11 @@ export const Themes = [
             "#fff0e4", //body background
             "#e4e4e4", //inputs background
             "#fac0a1", //profile second color
-            "#FFBA64", //login signup
+            "#FFBA64", //login signup form
             "#E4C17F", //item bg
             "#f06d27" ,//nav background
-            "#FFFFFF" //hover 
+            "#FFFFFF" ,//hover 
+            "#000000" //font color
         ]
     },
     {
@@ -20,7 +21,8 @@ export const Themes = [
             "#9BC2FF",
             "#9CE3FF",
             "#23bcfe",
-            "#FFFFFF"
+            "#FFFFFF",
+            "#000000"
         ]
     },
     {
@@ -32,7 +34,8 @@ export const Themes = [
             "#63D188",
             "#9BFFAB",
             "#3bdf70",
-            "#FFFFFF"
+            "#FFFFFF",
+            "#000000"
           ]
     },
     {
@@ -44,7 +47,8 @@ export const Themes = [
             "#FFF766",
             "#E0D73B",
             "#fff31d",
-            "#c91a52"
+            "#c91a52",
+            "#000000"
           ]
     },
     {
@@ -56,7 +60,21 @@ export const Themes = [
             "#F66EF1", 
             "#FF9BFC", 
             "#AE35AA", 
-            "#FFFFFF"
+            "#FFFFFF",
+            "#000000"
+        ]
+    },
+    {
+        name:'Dark',
+        colors:[
+            "#343a40", //body bg ok
+            "#e4e4e4", //input bg ok
+            "#adb5bd", //profile second color ok
+            "#212529", //login signup form ok
+            "#495057", //item bg ok
+            "#000000", //nav bg ok
+            "#80ffdb", //hover color
+            "#FFFFFF" //font ok
         ]
     }
 ];

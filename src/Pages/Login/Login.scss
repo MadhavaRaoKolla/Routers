@@ -27,6 +27,7 @@
         label {
             margin-bottom: .5rem;
             font-size: 1.2rem;
+            color: var(--color-7);
         }
 
         input[type="text"],
@@ -72,9 +73,9 @@
     a {
         padding: 1rem 0;
         font-size: 1.2rem;
-        color: black;
+        color: var(--color-7);
         &:hover{
-            color: rgb(238, 33, 33);
+            color:var(--color-6);
         }
     }
 }

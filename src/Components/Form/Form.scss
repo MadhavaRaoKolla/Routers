@@ -7,12 +7,13 @@
         font-weight: bold;
         padding-bottom: 0.7rem;
         text-align: center;
+        color: var(--color-7);
       }
 
       background-color:var(--color-3);
       padding: 1.5rem;
       border-radius: 10px;
-      box-shadow: 0 5px 10px rgba(7, 7, 7, 0.5);
+      box-shadow: 0 0px 5px var(--color-7);
       width: 30rem;
       height: 35rem;
       display: flex;
@@ -22,11 +23,13 @@
       label {
         margin-bottom: 0.3rem;
         font-size: 1.2rem;
+        color: var(--color-7);
       }
   
       div {
         margin-bottom: 0.2rem;
         font-size: 1.2rem;
+        color: var(--color-7);
       }
   
       input[type="text"],input[type="email"],

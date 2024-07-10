@@ -15,7 +15,7 @@ const Nav = () => {
 
   return (
    <nav className="navbar">
-    <h1>Routes</h1>
+    <h1>InputForm</h1>
     <div className="links">
         {user ? 
           ( <> 

@@ -25,7 +25,7 @@
       justify-content: space-between;
       padding: 0 2px;
       margin: 0 2px;
-
+      color: var(--color-7);
       input[type="text"],
       input[type="date"],
       input[type="email"],
@@ -47,6 +47,7 @@
       .genders {
         display: flex;
         font-size: 1.2rem;
+        color: var(--color-7);
         justify-content: space-around;
         width: 15rem;
         .radio {
@@ -86,9 +87,9 @@
   a {
     padding: 10px;
     padding-left: 30%;
-    color: black;
+    color: var(--color-7);
     &:hover {
-      color: rgb(238, 33, 33);
+      color:var(--color-6);
     }
   }
 }
