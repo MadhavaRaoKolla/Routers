@@ -3,6 +3,7 @@ import './Register.scss';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/Auth';
 import bcrypt from 'bcryptjs';
+import {Button,Signup} from '../../Components/StyledComponents/Loginbox'
 
 const Register = () => {
   const [userdata, setUserData] = useState({
@@ -98,7 +99,7 @@ const Register = () => {
   };
 
   return (
-    <div className="signup">
+    <Signup className='signup'> 
       <form className="signup-form" onSubmit={handleSubmit}>
         <h1>SignUp</h1>
         <div className="form-group">
@@ -162,11 +163,11 @@ const Register = () => {
           />
         </div>
         <div className="button">
-          <button className="submit">Submit</button>
+          <Button>Submit</Button>
         </div>
       </form>
       <Link to="/login">Existing User !</Link>
-    </div>
+    </Signup>
   );
 };
 
