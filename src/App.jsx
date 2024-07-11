@@ -9,14 +9,12 @@ const App = () => {
   return (
     <AuthProvider>
     <ThemeProvider>
-    {/* <Router> */}
       <div className="app">
         <Nav />
         <div className="content">
           <Approutes/>
         </div>
       </div>
-      {/* </Router> */}
       </ThemeProvider>
       </AuthProvider>
   );
