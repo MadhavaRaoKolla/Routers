@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import './Login.scss';
 import { AuthContext } from '../../Context/Auth';
 import bcrypt from 'bcryptjs';
-import { Loginbox,Button } from '../../Components/StyledComponents/Loginbox';
+import { Loginbox,Button } from '../../Components/StyledComponents/LoginSignup';
 
 const Login = () => {
   const [errors, setErrors] = useState({});
