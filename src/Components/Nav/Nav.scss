@@ -1,23 +1,9 @@
-  h1{
-    color:var(--color-7);
-    font-size: 2rem;
-  }
- 
- .links {
-    margin-left: auto;
-  }
-  
-  a {
-    margin-left: 1rem;
-    text-decoration: none;
-    padding: 3px;
-    font-size: 1.5rem;
-    color: var(--color-7);
-
-    &:hover{
-      color:var(--color-6);
+.navbar{
+   
+   .links {
+      margin-left: auto;
     }
-  }
+}
 
 @media(max-width:600px){
   .navbar{
@@ -26,10 +12,10 @@
     h1{
       font-size: 1.7rem;
     }
-    button,a{
+    .button,a{
       font-size: 1.2rem;
     }
-    button{
+    .button{
       padding: 0 5px;
     }
     a{
@@ -38,6 +24,7 @@
     }
   }
 }
+
 @media(max-width:375px){
   .navbar{
     height: 3rem;
@@ -45,7 +32,7 @@
     h1{
       font-size: 1.3rem;
     }
-    button,a{
+    .button,a{
       font-size: 1rem;
     }
   }

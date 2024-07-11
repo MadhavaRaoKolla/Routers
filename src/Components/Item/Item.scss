@@ -1,22 +1,4 @@
 .user-info {
-    background-color: var(--color-4);    
-    padding: 1rem;
-    border-radius: 5px;
-    box-shadow: 0 0px 5px var(--color-7);
-    width: 30rem;
-    margin-bottom: 1rem;
-    transition: transform 0.3s ease;
-
-    &:hover{
-      transform: scale(1.02);
-    }
-
-    p {
-      margin-bottom: 0.5rem;
-      font-size: 1.2rem;
-      color: var(--color-7);
-    }
-
     .delete{
       padding: 0.3rem;
       border-radius: 5px;

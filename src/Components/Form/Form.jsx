@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import './Form.scss';
 import Item from '../Item/Item';
 import { AuthContext } from '../../Context/Auth';
+import { Data, Label, P } from '../StyledComponents/FormComp';
 
 const Form = () => {
   const { user } = useContext(AuthContext);
@@ -71,25 +72,25 @@ const Form = () => {
 
   return (
     <div className='student'>
-      <form className='data' onSubmit={handleSubmit}>
-        <p>Student details form:</p>
-        <label>First Name</label>
+      <Data onSubmit={handleSubmit} className='data'>
+        <P>Student details form:</P>
+        <Label>First Name</Label>
         <input type="text" name='firstname' value={formData.firstname} onChange={handleChange} />
-        <label>Last Name</label>
+        <Label>Last Name</Label>
         <input type="text" name='lastname' value={formData.lastname} onChange={handleChange} />
-        <label>Email</label>
+        <Label>Email</Label>
         <input type="email" name='email' value={formData.email} onChange={handleChange} />
-        <label>Gender</label>
-        <div>
+        <Label>Gender</Label>
+        <Label>
           <input type="radio" name='gender' value='Male' checked={formData.gender === 'Male'} onChange={handleChange} />Male
-        </div>
-        <div>
+        </Label>
+        <Label>
           <input type="radio" name='gender' value='Female' checked={formData.gender === 'Female'} onChange={handleChange} />Female
-        </div>
-        <label>About</label>
+        </Label>
+        <Label>About</Label>
         <textarea name="about" value={formData.about} onChange={handleChange} required></textarea>
         <input type="submit" />
-      </form>
+        </Data>
       <div className="item">
         {data && <Item data={data} handleDelete={handleDelete} />}
       </div>

@@ -2,6 +2,8 @@ import React,{useState,useContext,useEffect} from 'react'
 import './Profile.scss'
 import { AuthContext } from '../../Context/Auth'
 import { useNavigate } from 'react-router'
+import { ItemP, P } from '../../Components/StyledComponents/FormComp'
+import styled from 'styled-components'
 
 const Profile = () => {
     const {user,login,logout} = useContext(AuthContext); //local storage user
@@ -83,13 +85,13 @@ const Profile = () => {
 
     if(!user) return <div>Loading...</div>;
     return (
-        <div className='profile'>
-            <p>Welcome to Your Profile</p>
+        <ProfileDiv className='profile'>
+            <P>Welcome to Your Profile</P>
             <div className="content">
                 <div className="left">
-                    <p>Hi {user.firstname}</p>
-                    <p>Here you can view your profile.</p>
-                    <p>And can edit your details also..!</p> 
+                    <ItemP>Hi {user.firstname}</ItemP>
+                    <ItemP>Here you can view your profile.</ItemP>
+                    <ItemP>And can edit your details also..!</ItemP> 
                 </div>
                 <div className="right">
                     <form className='forms'>
@@ -118,8 +120,20 @@ const Profile = () => {
             </div>
             <button className="update" onClick={handleSubmit} >Update</button>
             <button className="delete" onClick={handleDelete} >Delete Account</button>
-        </div>
+        </ProfileDiv>
     )
 }
+
+const ProfileDiv = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 10px;
+    min-width: 40rem;
+    box-shadow: 0px 0px 2px var(--color-7);
+    background: linear-gradient(100deg,var(--color-3),var(--color-2));  
+    font-weight: bold;
+`;
 
 export default Profile

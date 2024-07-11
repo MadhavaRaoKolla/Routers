@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const Loginbox = styled.div`
     display: flex;
@@ -40,4 +41,31 @@ export const Signup = styled.div`
   box-shadow: 0 5px 10px rgba(7, 7, 7, 0.5);
   border: 1px solid #bfbbbb;
   background-color:var(--color-3);
+`;
+
+export const Title = styled.h1`
+    font-size: 2rem;
+    text-align: center;
+    margin: 1rem 0;
+    color: var(--color-7);
+`;
+
+export const Label = styled.label`
+    margin-bottom: .5rem;
+    font-size: 1.2rem;
+    color: var(--color-7);
+`;
+
+export const StyleLink = styled(Link)`
+    padding: 1rem 0;
+    font-size: 1.2rem;
+    color: var(--color-7);
+    text-decoration: none;
+    &:hover{
+        color:var(--color-6);
+    }
+`;
+
+export const Formgroup = styled.div`
+    color: var(--color-7);
 `;

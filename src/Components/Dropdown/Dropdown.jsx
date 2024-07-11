@@ -1,8 +1,7 @@
 import React, { useContext, useState } from "react";
-import "./Dropdown.scss";
 import { Themes } from "../../Theme/Theme";
 import { ThemeContext } from "../../Context/ThemeContext";
-import { DisplayButton,Circle } from "../StyledComponents/List";
+import { DisplayButton,Circle, DropdownContent, Option } from "../StyledComponents/List";
 
 const CustomDropdown = () => {
   
@@ -21,21 +20,21 @@ const CustomDropdown = () => {
   };
 
   return (
-    <div className="dropdown">
+    <div className="dropdown" style={{display:"inline-block"}}>
       <DisplayButton onClick={toggleDropdown}>
         <Circle/>
         {selectedTheme.name}
       </DisplayButton>
       {isOpen && (
-        <div className="dropdown-content">
+        <DropdownContent>
           {Themes.map((theme) => (
-            <div key={theme.name} className="option" onClick={() => handleOptionClick(theme)}>
-             <Circle style={{ backgroundColor: theme.colors[5] }}/>
-             {theme.name}
-            </div>
+             <Option key={theme.name} onClick={ ()=> {handleOptionClick(theme)}}>
+              <Circle style={{backgroundColor: theme.colors[5]}}/>
+              {theme.name}
+             </Option>
            ))
           }
-        </div>
+          </DropdownContent>   
       )}
     </div>
   );

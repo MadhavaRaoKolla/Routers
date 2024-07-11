@@ -1,42 +1,14 @@
 .student{
   display: flex;
   margin: 2rem;
+
   .data {
-      background-color:var(--color-3);
-      padding: 1.5rem;
-      border-radius: 10px;
-      box-shadow: 0 0px 5px var(--color-7);
-      width: 30rem;
-      height: 35rem;
-      display: flex;
-      flex-direction: column;
-      margin: 0rem 1rem;
-      p{
-        font-size: 1.5rem;
-        font-weight: bold;
-        padding-bottom: 0.7rem;
-        text-align: center;
-        color: var(--color-7);
-      }
-  
-      label {
-        margin-bottom: 0.3rem;
-        font-size: 1.2rem;
-        color: var(--color-7);
-      }
-  
-      div {
-        margin-bottom: 0.2rem;
-        font-size: 1.2rem;
-        color: var(--color-7);
-      }
-  
       input[type="text"],input[type="email"],
       textarea {
         padding: 0.4rem;
         margin-bottom: 0.7rem;
         border: 1px solid #ced4da;
-        background-color:var(--color-1);
+        background-color:#e4e4e4;
         border-radius: 5px;
         font-size: 1rem;
       }
