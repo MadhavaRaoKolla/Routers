@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import "./Dropdown.scss";
 import { Themes } from "../../Theme/Theme";
 import { ThemeContext } from "../../Context/ThemeContext";
+import { DisplayButton,Circle } from "../StyledComponents/List";
 
 const CustomDropdown = () => {
   
@@ -21,15 +22,15 @@ const CustomDropdown = () => {
 
   return (
     <div className="dropdown">
-      <button className="button" onClick={toggleDropdown}>
-        <div className="circle"/>
+      <DisplayButton onClick={toggleDropdown}>
+        <Circle/>
         {selectedTheme.name}
-      </button>
+      </DisplayButton>
       {isOpen && (
         <div className="dropdown-content">
           {Themes.map((theme) => (
             <div key={theme.name} className="option" onClick={() => handleOptionClick(theme)}>
-             <div style={{ backgroundColor: theme.colors[5] }} className="circle"/>
+             <Circle style={{ backgroundColor: theme.colors[5] }}/>
              {theme.name}
             </div>
            ))

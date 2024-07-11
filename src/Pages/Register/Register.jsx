@@ -3,7 +3,7 @@ import './Register.scss';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/Auth';
 import bcrypt from 'bcryptjs';
-import {Button,Signup} from '../../Components/StyledComponents/Loginbox'
+import {Button,Signup} from '../../Components/StyledComponents/LoginSignup'
 
 const Register = () => {
   const [userdata, setUserData] = useState({
