@@ -1,11 +1,10 @@
 import styled from "styled-components";
 
-export const Data = styled.div`
+export const Data = styled.form`
     background-color:var(--color-3);
     padding: 1.5rem;
     border-radius: 10px;
     box-shadow: 0 0px 5px var(--color-7);
-    width: 30rem;
     height: 35rem;
     display: flex;
     flex-direction: column;
@@ -29,6 +28,7 @@ export const Label = styled.label`
 export const Info = styled.div`
     background-color: var(--color-4);    
     padding: 1rem;
+    width: 25rem;
     border-radius: 5px;
     box-shadow: 0 0px 5px var(--color-7);
     margin-bottom: 1rem;
