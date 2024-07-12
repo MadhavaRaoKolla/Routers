@@ -95,26 +95,26 @@ const Profile = () => {
                 </div>
                 <div className="right">
                     <form className='forms'>
-                            <div className="block">
-                                <label>Firstname: </label>
-                                <input type="text" name='firstname' value={updates.firstname} onChange={handleChange}/>
-                            </div>
-                            <div className="block">
-                                <label>Lastname:</label>
-                                <input type="text" name='lastname' value={updates.lastname} onChange={handleChange}/>
-                            </div>
-                            <div className="block">
-                                <label>Username:</label>
-                                <input type="text" name='username' value={updates.username} onChange={handleChange}/>
-                            </div>
-                            <div className="block">
-                                <label>Email:</label>
-                                <input type="email" name='email' value={updates.email} onChange={handleChange}/>
-                            </div>
-                            <div className="block">
-                                <label>DOB:</label>
-                                <input type="date" name='dob' value={updates.dob} onChange={handleChange}/>
-                            </div>
+                        <div className="block">
+                          <label>Firstname: </label>
+                          <input type="text" name='firstname' value={updates.firstname} onChange={handleChange}/>
+                        </div>
+                        <div className="block">
+                          <label>Lastname:</label>
+                          <input type="text" name='lastname' value={updates.lastname} onChange={handleChange}/>
+                        </div>
+                        <div className="block">
+                          <label>Username:</label>
+                          <input type="text" name='username' value={updates.username} onChange={handleChange}/>
+                        </div>
+                        <div className="block">
+                          <label>Email:</label>
+                          <input type="email" name='email' value={updates.email} onChange={handleChange}/>
+                        </div>
+                        <div className="block">
+                          <label>DOB:</label>
+                          <input type="date" name='dob' value={updates.dob} onChange={handleChange}/>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -131,8 +131,8 @@ const ProfileDiv = styled.div`
     padding: 1rem;
     border-radius: 10px;
     min-width: 40rem;
-    box-shadow: 0px 0px 2px var(--color-7);
-    background: linear-gradient(100deg,var(--color-3),var(--color-2));  
+    box-shadow: 0px 0px 2px ${({theme}) => theme.fontColor};
+    background: linear-gradient(100deg, ${({theme}) => theme.loginSignupForm}, ${({theme}) => theme.profileSecondColor});  
     font-weight: bold;
 `;
 

@@ -3,7 +3,7 @@ import { AuthContext } from '../../Context/Auth'
 import styled from 'styled-components'
 
 const Home = () => {
-  // const user = JSON.parse(localStorage.getItem('user'))
+
   const {user} = useContext(AuthContext)
   return (
     <HomeDiv className='home'>
@@ -21,7 +21,7 @@ const HomeDiv = styled.div`
     font-family: Noto Sans;
     margin: 1rem;
     font-size: 2rem;
-    color: var(--color-7);
+    color: ${({theme}) => theme.fontColor};
   @media(max-width: 650px) {
     font-size: 1.5rem;
   }

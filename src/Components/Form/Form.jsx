@@ -75,11 +75,11 @@ const Form = () => {
       <Data onSubmit={handleSubmit} className='data'>
         <P>Student details form:</P>
         <Label>First Name</Label>
-        <input type="text" name='firstname' value={formData.firstname} onChange={handleChange} />
+          <input type="text" name='firstname' value={formData.firstname} onChange={handleChange} />
         <Label>Last Name</Label>
-        <input type="text" name='lastname' value={formData.lastname} onChange={handleChange} />
+          <input type="text" name='lastname' value={formData.lastname} onChange={handleChange} />
         <Label>Email</Label>
-        <input type="email" name='email' value={formData.email} onChange={handleChange} />
+          <input type="email" name='email' value={formData.email} onChange={handleChange} />
         <Label>Gender</Label>
         <Label>
           <input type="radio" name='gender' value='Male' checked={formData.gender === 'Male'} onChange={handleChange} />Male
@@ -88,8 +88,8 @@ const Form = () => {
           <input type="radio" name='gender' value='Female' checked={formData.gender === 'Female'} onChange={handleChange} />Female
         </Label>
         <Label>About</Label>
-        <textarea name="about" value={formData.about} onChange={handleChange} required></textarea>
-        <input type="submit" />
+          <textarea name="about" value={formData.about} onChange={handleChange} required></textarea>
+          <input type="submit" />
         </Data>
       <div className="item">
         {data && <Item data={data} handleDelete={handleDelete} />}

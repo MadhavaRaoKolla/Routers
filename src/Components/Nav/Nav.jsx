@@ -9,6 +9,7 @@ import { Navbar,Button, Image, StyledLink, Title} from '../StyledComponents/Navb
 const Nav = () => {
   const {logout,user} = useContext(AuthContext);
   const navigate=useNavigate();
+  
   const handleLogout = () => {
     logout();
     navigate('/register')

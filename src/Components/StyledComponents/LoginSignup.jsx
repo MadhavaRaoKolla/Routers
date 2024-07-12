@@ -12,7 +12,7 @@ export const Loginbox = styled.div`
     border-radius: 8px;
     box-shadow: 0 5px 10px rgba(7, 7, 7, 0.5);
     border: 1px solid #ccc;
-    background-color:var(--color-3);
+    background-color:${({theme}) => theme.loginSignupForm};
 `;
 
 export const Button = styled.button`
@@ -40,32 +40,32 @@ export const Signup = styled.div`
   border-radius: 10px;
   box-shadow: 0 5px 10px rgba(7, 7, 7, 0.5);
   border: 1px solid #bfbbbb;
-  background-color:var(--color-3);
+  background-color:${({theme}) => theme.loginSignupForm};
 `;
 
 export const Title = styled.h1`
     font-size: 2rem;
     text-align: center;
     margin: 1rem 0;
-    color: var(--color-7);
+    color: ${({theme}) => theme.fontColor};
 `;
 
 export const Label = styled.label`
     margin-bottom: .5rem;
     font-size: 1.2rem;
-    color: var(--color-7);
+    color: ${({theme}) => theme.fontColor};
 `;
 
 export const StyleLink = styled(Link)`
     padding: 1rem 0;
     font-size: 1.2rem;
-    color: var(--color-7);
+    color: ${({theme}) => theme.fontColor};
     text-decoration: none;
     &:hover{
-        color:var(--color-6);
+        color:${({theme}) => theme.hover};
     }
 `;
 
 export const Formgroup = styled.div`
-    color: var(--color-7);
+    color: ${({theme}) => theme.fontColor};
 `;

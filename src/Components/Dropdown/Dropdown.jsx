@@ -5,13 +5,13 @@ import { DisplayButton,Circle, DropdownContent, Option } from "../StyledComponen
 
 const CustomDropdown = () => {
   
-  const [selectedTheme, setSelectedTheme] = useState(Themes[0]);
+  const [selectedTheme, setSelectedTheme] = useState('Orange'); //to display on navbar
   const [isOpen, setIsOpen] = useState(false);
-  const {handleTheme} = useContext(ThemeContext);
+  const {handleTheme} = useContext(ThemeContext); //passing theme for styling
 
-  const handleOptionClick = (theme) => {
-    setSelectedTheme(theme);
-    handleTheme(theme.colors);
+  const handleOptionClick = (themeName) => { 
+    setSelectedTheme(themeName);
+    handleTheme(themeName);
     setIsOpen(false);
   };
 
@@ -23,16 +23,17 @@ const CustomDropdown = () => {
     <div className="dropdown" style={{display:"inline-block"}}>
       <DisplayButton onClick={toggleDropdown}>
         <Circle/>
-        {selectedTheme.name}
+        {selectedTheme}
       </DisplayButton>
       {isOpen && (
         <DropdownContent>
-          {Themes.map((theme) => (
-             <Option key={theme.name} onClick={ ()=> {handleOptionClick(theme)}}>
-              <Circle style={{backgroundColor: theme.colors[5]}}/>
-              {theme.name}
-             </Option>
-           ))
+          {
+            Object.keys(Themes).map((themeName)=> (
+              <Option key={themeName} onClick={()=>{handleOptionClick(themeName)}}>
+                <Circle style={{backgroundColor: Themes[themeName].navBackground}}/>
+                {themeName}
+              </Option>
+            ) )
           }
           </DropdownContent>   
       )}

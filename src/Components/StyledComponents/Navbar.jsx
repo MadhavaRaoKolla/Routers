@@ -8,11 +8,11 @@ export const Navbar = styled.div`
     border-bottom: 1px solid #7f7d7d;
     height: 4rem;
     width: 100%;
-    background-color: var(--color-5);  
+    background-color: ${({theme}) => theme.navBackground};  
 `;
 
 export const Title = styled.h1`
-    color:var(--color-7);
+    color:${({theme}) => theme.fontColor};
     font-size: 2rem;
 `;
 
@@ -37,8 +37,8 @@ export const StyledLink = styled(Link)`
     text-decoration: none;
     padding: 3px;
     font-size: 1.5rem;
-    color: var(--color-7);
+    color: ${({theme}) => theme.fontColor};
     &:hover{
-        color:var(--color-6);
+        color:${({theme}) => theme.hover};
     }
 `;
