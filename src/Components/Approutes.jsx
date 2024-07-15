@@ -17,14 +17,14 @@ const Approutes = () => {
       path: "/",
       element: <AppLayout />,
       children: [
-        { path: "/", element:<Home/> },
+        { path: "/", element: <Home /> },
         { path: "form", element: <Form /> },
         { path: "profile", element: <Profile /> },
       ],
     },
-    { path: "/register", element: <Register/> },
-    { path: "/login", element:<Login />},
-    { path: "*", element: <Error /> }
+    { path: "/register", element: <Register /> },
+    { path: "/login", element: <Login /> },
+    { path: "*", element: <Error /> },
   ]);
 
   if (loading) {

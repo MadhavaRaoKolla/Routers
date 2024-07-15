@@ -7,6 +7,7 @@ import { AuthContext } from "../Context/Auth";
 
 const AppLayout = () => {
   const { user } = useContext(AuthContext);
+
   if (!user) {
     return <Navigate to="/login" />;
   }

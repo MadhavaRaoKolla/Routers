@@ -13,6 +13,10 @@ export const Loginbox = styled.div`
   box-shadow: 0 5px 10px rgba(7, 7, 7, 0.5);
   border: 1px solid #ccc;
   background-color: ${({ theme }) => theme.loginSignupForm};
+  @media (max-width: 440px) {
+    width: 18rem;
+    padding: 20px;
+  }
 `;
 
 export const Button = styled.button`

@@ -1,15 +1,28 @@
 {
   "data": [
     {
-      "id": "2379",
+      "id": "c0ff",
       "firstname": "Madhav ",
-      "lastname": "Kolla ",
+      "lastname": "Kolla",
       "username": "Madhu",
       "dob": "2002-06-16",
       "gender": "Male",
       "email": "madhavaraokolla2@gmail.com",
-      "password": "$2a$10$TU2derK8pB4PF8z86CeiXuE32VkFk6XwONTf1XDAR7oVl.fz174tm",
-      "confirmpassword": "$2a$10$TU2derK8pB4PF8z86CeiXuE32VkFk6XwONTf1XDAR7oVl.fz174tm"
+      "role": "User",
+      "password": "$2a$10$1CEEoat62s.DGcsyDy1v5e0Dnnb3Z4CeGC3/FhcpMe9i9daHhrxEm",
+      "confirmpassword": "$2a$10$1CEEoat62s.DGcsyDy1v5e0Dnnb3Z4CeGC3/FhcpMe9i9daHhrxEm"
+    },
+    {
+      "id": "4791",
+      "firstname": "sachin",
+      "lastname": "Tendulkar",
+      "username": "paaji",
+      "dob": "2002-06-16",
+      "gender": "Male",
+      "email": "sachin@gmail.com",
+      "role": "Admin",
+      "password": "$2a$10$/dKofiNLZKOhbXFsi238EuwEFnpPb6CGIESRpO.pte4C54Asa43PG",
+      "confirmpassword": "$2a$10$/dKofiNLZKOhbXFsi238EuwEFnpPb6CGIESRpO.pte4C54Asa43PG"
     }
   ]
 }

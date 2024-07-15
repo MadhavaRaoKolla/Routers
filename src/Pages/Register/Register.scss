@@ -1,11 +1,10 @@
 .signup {
-    width: 30rem;
+    width: 31rem;
   .signup-form {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 1.5rem;
-    padding-bottom: 0;
+    padding: 0 1.5rem;
     font-size: 1.3rem;
 
     .form-group {
@@ -13,7 +12,18 @@
       justify-content: space-between;
       padding: 0 2px;
       margin: 0 2px;
-      
+
+      select{
+        width: 15rem;
+        padding: 5px;
+        margin: 0 0 1rem 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1rem;
+        background-color:#e1dcdc;
+        color: #495057;
+      }
+
       input[type="text"],
       input[type="date"],
       input[type="email"],
@@ -63,8 +73,12 @@
 
 @media (max-width: 600px) {
   .signup {
+    width: 26rem;
     .signup-form {
       .form-group {
+        select{
+          width: 10rem;
+        }
         .genders{
           width: 10rem;
         }
@@ -83,11 +97,17 @@
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 450px) {
   .signup {
+    width: 24rem;
     .signup-form {
       .form-group {
-        font-size: 1.3rem;
+        label{
+          font-size: 1.1rem;
+        }
+        select{
+          width: 10rem;
+        }
         input[type="text"],
         input[type="date"],
         input[type="email"],
@@ -105,12 +125,14 @@
 
 @media (max-width: 400px) {
   .signup {
+    width: 19rem;
     .signup-form {
-      padding: 0.5rem;
+      padding: 0.3rem;
       h1{
         font-size: 1.5rem;
       }
       .form-group {
+        padding: 0;
         .genders{
           width: 8rem;
           font-size: 1rem;
@@ -122,6 +144,9 @@
         input[type="date"],
         input[type="email"],
         input[type="password"] {
+          width: 8rem;
+        }
+        select{
           width: 8rem;
         }
       }

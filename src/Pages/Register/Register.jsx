@@ -13,13 +13,11 @@ const Register = () => {
     dob: '',
     gender: '',
     email: '',
+    role:'',
     password: '',
     confirmpassword: ''
   });
-  const [role,setRole]=useState('')
-  const handleRole = (e) => {
-    setRole(e.target.value)
-  }
+
   const [errors, setErrors] = useState({});
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -38,6 +36,7 @@ const Register = () => {
     if (!userdata.dob) errors.dob = 'Date of birth is required';
     if (!userdata.gender) errors.gender = 'Gender is required';
     if (!userdata.email) errors.email = 'Email is required';
+    if (!userdata.role) errors.role="Role is Required";
     if (!userdata.password) errors.password = 'Password is required';
     if (!userdata.confirmpassword) errors.confirmpassword = 'Confirm Password is required';
     if (userdata.password !== userdata.confirmpassword) errors.confirmpassword = 'Passwords do not match';
@@ -67,6 +66,7 @@ const Register = () => {
           dob: '',
           gender: '',
           email: '',
+          role:'',
           password: '',
           confirmpassword: ''
         });
@@ -92,6 +92,7 @@ const Register = () => {
         dob: '',
         gender: '',
         email: '',
+        role:'',
         password: '',
         confirmpassword: ''
       });
@@ -157,6 +158,16 @@ const Register = () => {
             placeholder={errors.email ? errors.email : ''}
           />
         </Formgroup>
+       
+        <Formgroup className='form-group'>
+          <label>Role:</label>
+          <select name="role" value={userdata.role} onChange={handleChange} 
+            className={errors.role ? 'error' : ''} placeholder={errors.role ? errors.role : ''}>
+            <option value="">{errors.role ? errors.role : '--select--'}</option>
+            <option value="User">User</option>
+            <option value="Admin">Admin</option>
+          </select>
+        </Formgroup>
 
         <Formgroup className='form-group'>
           <label>Password:</label>
@@ -165,7 +176,7 @@ const Register = () => {
             placeholder={errors.password ? errors.password : ''}
           />
         </Formgroup>
-
+       
         <Formgroup className='form-group'>
           <label>Confirm Password:</label>
           <input type="password" name="confirmpassword" value={userdata.confirmpassword} onChange={handleChange}  
