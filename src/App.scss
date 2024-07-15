@@ -5,15 +5,11 @@
     margin: 0;
     box-sizing: border-box;
 }
-
-body{
-    height: 100vh;
-    font-family: Noto Sans;
-    background-color: var(--color-0);
-}
-
-.content{
-    display: flex;
-    justify-content: center;
-    margin: 1rem;
+.app{
+    width: 100vw;
+    .content{
+        display: flex;
+        justify-content: center;
+        margin: 1rem;
+    }
 }

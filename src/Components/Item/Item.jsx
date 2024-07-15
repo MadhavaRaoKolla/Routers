@@ -1,16 +1,17 @@
 import React from 'react'
 import './Item.scss'
+import { Info, ItemP } from '../StyledComponents/FormComp'
 
 const Item = ({data,handleDelete}) => {
   return (
     <div>
         {data.map(item=>(
-            <div className="user-info" key={item.id}>
-                <p>First Name: {item.firstname}</p>
-                <p>Last Name: {item.lastname}</p>
-                <p>About: {item.about}</p>
-                <button className="delete" onClick={()=>{handleDelete(item.id)}}>Delete</button>
-            </div>
+            <Info className='user-info' key={item.id}>
+              <ItemP>First Name: {item.firstname}</ItemP>
+              <ItemP>Last Name: {item.lastname}</ItemP>
+              <ItemP>About: {item.about}</ItemP>
+              <button className="delete" onClick={()=>{handleDelete(item.id)}}>Delete</button>
+            </Info>
         ))}
     </div>
   )

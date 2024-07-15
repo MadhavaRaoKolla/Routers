@@ -1,9 +1,9 @@
 import React, { useState, useContext } from 'react';
 import './Register.scss';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/Auth';
 import bcrypt from 'bcryptjs';
-import {Button,Signup} from '../../Components/StyledComponents/LoginSignup'
+import {Button,Formgroup,Signup,StyleLink,Title} from '../../Components/StyledComponents/LoginSignup'
 
 const Register = () => {
   const [userdata, setUserData] = useState({
@@ -16,7 +16,10 @@ const Register = () => {
     password: '',
     confirmpassword: ''
   });
-
+  const [role,setRole]=useState('')
+  const handleRole = (e) => {
+    setRole(e.target.value)
+  }
   const [errors, setErrors] = useState({});
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -101,36 +104,41 @@ const Register = () => {
   return (
     <Signup className='signup'> 
       <form className="signup-form" onSubmit={handleSubmit}>
-        <h1>SignUp</h1>
-        <div className="form-group">
+        <Title>Sign Up</Title>
+
+        <Formgroup className="form-group">
           <label>First Name:</label>
           <input type="text" name='firstname' value={userdata.firstname} onChange={handleChange} 
             className={errors.firstname ? 'error' : ''}
             placeholder={errors.firstname ? errors.firstname : ''}
           />
-        </div>
-        <div className="form-group">
+        </Formgroup>
+
+        <Formgroup className='form-group'>
           <label>Last Name:</label>
           <input type="text" name='lastname' value={userdata.lastname} onChange={handleChange}  
             className={errors.lastname ? 'error' : ''}
             placeholder={errors.lastname ? errors.lastname : ''}
           />
-        </div>
-        <div className="form-group">
+        </Formgroup>
+
+        <Formgroup className='form-group'>
           <label>Username:</label>
           <input type="text" name='username' value={userdata.username} onChange={handleChange}  
             className={errors.username ? 'error' : ''}
             placeholder={errors.username ? errors.username : ''}
           />
-        </div>
-        <div className="form-group">
+        </Formgroup>
+
+        <Formgroup className='form-group'>
           <label>Date of birth:</label>
           <input type="date" name="dob" value={userdata.dob} onChange={handleChange}  
             className={errors.dob ? 'error' : ''}
             placeholder={errors.dob ? errors.dob : ''}
           />
-        </div>
-        <div className="form-group">
+        </Formgroup>
+
+        <Formgroup className='form-group'>
           <label>Gender</label>
           <div className="genders">
             <label className={errors.gender ? 'radio' : ''}>
@@ -140,33 +148,37 @@ const Register = () => {
               <input type="radio" name="gender" value="Female" checked={userdata.gender === 'Female'} onChange={handleChange}  />Female
             </label>
           </div>
-        </div>
-        <div className="form-group">
+        </Formgroup>
+
+        <Formgroup className='form-group'>
           <label>Email:</label>
           <input type="email" name="email" value={userdata.email} onChange={handleChange}  
             className={errors.email ? 'error' : ''}
             placeholder={errors.email ? errors.email : ''}
           />
-        </div>
-        <div className="form-group">
+        </Formgroup>
+
+        <Formgroup className='form-group'>
           <label>Password:</label>
           <input type="password" name="password" value={userdata.password} onChange={handleChange}  
             className={errors.password ? 'error' : ''}
             placeholder={errors.password ? errors.password : ''}
           />
-        </div>
-        <div className="form-group">
+        </Formgroup>
+
+        <Formgroup className='form-group'>
           <label>Confirm Password:</label>
           <input type="password" name="confirmpassword" value={userdata.confirmpassword} onChange={handleChange}  
             className={errors.confirmpassword ? 'error' : ''}
             placeholder={errors.confirmpassword ? errors.confirmpassword : ''}
           />
-        </div>
+        </Formgroup>
+
         <div className="button">
           <Button>Submit</Button>
         </div>
       </form>
-      <Link to="/login">Existing User !</Link>
+      <StyleLink to='/login'>Existing User</StyleLink>
     </Signup>
   );
 };

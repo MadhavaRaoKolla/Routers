@@ -1,27 +1,22 @@
-import React,{createContext, useState,useEffect} from 'react';
-import { Themes } from '../Theme/Theme';
+import React, { createContext, useState, useEffect } from "react";
+import { Themes } from "../Theme/Theme";
+import { ThemeProvider as StyledThemeProvider } from "styled-components";
 
-export const ThemeContext = createContext()
+export const ThemeContext = createContext();
 
-const ThemeProvider = ({children}) => {
+const ThemeProvider = ({ children }) => {
+  const [theme, setTheme] = useState(Themes.Orange);
+  const handleTheme = (newTheme) => {
+    setTheme(Themes[newTheme]);
+  };
 
-const [theme,setTheme] = useState(Themes[0].colors) 
-const handleTheme = (colors) => { setTheme(colors) }
-  
-useEffect(() => {
-    const root = document.documentElement;
-    theme.forEach((color, index) => {
-      root.style.setProperty(`--color-${index}`, color);
-    });
-  }, [theme]);
-
-  return ( 
+  return (
     <>
-      <ThemeContext.Provider value={{theme,handleTheme}}>
-        {children}
+      <ThemeContext.Provider value={{ theme, handleTheme }}>
+        <StyledThemeProvider theme={theme}>{children}</StyledThemeProvider>
       </ThemeContext.Provider>
     </>
-  )
-}
+  );
+};
 
 export default ThemeProvider;
