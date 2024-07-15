@@ -1,34 +1,37 @@
-import React, { useContext, useEffect } from 'react'
-import { useRoutes,Navigate } from 'react-router-dom'
-import Home from '../Pages/Home/Home'
-import Login from '../Pages/Login/Login'
-import Register from '../Pages/Register/Register'
-import Error from '../Pages/Error/Error'
-import Form from './Form/Form'
-import Profile from '../Pages/Profile/Profile'
-import { AuthContext } from '../Context/Auth'
+import React, { useContext } from "react";
+import { useRoutes } from "react-router-dom";
+import Home from "../Pages/Home/Home";
+import Login from "../Pages/Login/Login";
+import Register from "../Pages/Register/Register";
+import Error from "../Pages/Error/Error";
+import Form from "./Form/Form";
+import Profile from "../Pages/Profile/Profile";
+import { AuthContext } from "../Context/Auth";
+import AppLayout from "../Layouts/AppLayout";
 
 const Approutes = () => {
-    const {user,loading} = useContext(AuthContext); 
-    // const user = JSON.parse(localStorage.getItem('user'));
-    const routes = useRoutes([
-        {path:'/',element: user ? <Home/> : <Navigate to="/register"/>},
-        {path:'/form',element:user ? <Form/> : <Navigate to="/register"/>},
-        {path:'/profile',element:user ? <Profile/> : <Navigate to='/register'/>}, 
-        {path:'/register', element: !user ? <Register/> : <Navigate to="/"/>},
-        {path:'/login',element:!user ? <Login/> : <Navigate to="/"/>},
-        {path:'*',element:<Error/>}
-    ])
-    
-    if(loading){
-        return <div>Loading...</div>
-    }
-   
-  return (
-    <>
-        {routes}
-    </>
-)
-}
+  const { loading } = useContext(AuthContext);
 
-export default Approutes
+  const routes = useRoutes([
+    {
+      path: "/",
+      element: <AppLayout />,
+      children: [
+        { path: "/", element:<Home/> },
+        { path: "form", element: <Form /> },
+        { path: "profile", element: <Profile /> },
+      ],
+    },
+    { path: "/register", element: <Register/> },
+    { path: "/login", element:<Login />},
+    { path: "*", element: <Error /> }
+  ]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  return <>{routes}</>;
+};
+
+export default Approutes;

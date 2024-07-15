@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import './Register.scss';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/Auth';
 import bcrypt from 'bcryptjs';
 import {Button,Formgroup,Signup,StyleLink,Title} from '../../Components/StyledComponents/LoginSignup'
@@ -16,7 +16,10 @@ const Register = () => {
     password: '',
     confirmpassword: ''
   });
-
+  const [role,setRole]=useState('')
+  const handleRole = (e) => {
+    setRole(e.target.value)
+  }
   const [errors, setErrors] = useState({});
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();

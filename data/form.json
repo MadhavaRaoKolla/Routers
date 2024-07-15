@@ -1,5 +1,13 @@
 {
   "data": [
-    
+    {
+      "id": "bc06",
+      "firstname": "KOLLA",
+      "lastname": "RAO",
+      "email": "kolla20_ug@ee.nits.ac.in",
+      "gender": "Male",
+      "about": "asdfa",
+      "user_id": "2379"
+    }
   ]
 }

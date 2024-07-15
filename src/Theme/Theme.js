@@ -1,5 +1,4 @@
 export const Themes = {
-
   Orange: {
     bodyBackground: "#fff0e4",
     inputsBackground: "#e4e4e4",
@@ -8,7 +7,7 @@ export const Themes = {
     itemBg: "#E4C17F",
     navBackground: "#f06d27",
     hover: "#FFFF",
-    fontColor: "#000000"
+    fontColor: "#000000",
   },
 
   Ocean: {
@@ -19,7 +18,7 @@ export const Themes = {
     itemBg: "#9CE3FF",
     navBackground: "#23bcfe",
     hover: "#FFFFFF",
-    fontColor: "#000000"
+    fontColor: "#000000",
   },
 
   Green: {
@@ -30,7 +29,7 @@ export const Themes = {
     itemBg: "#9BFFAB",
     navBackground: "#3bdf70",
     hover: "#FFFFFF",
-    fontColor: "#000000"
+    fontColor: "#000000",
   },
 
   Yellow: {
@@ -41,7 +40,7 @@ export const Themes = {
     itemBg: "#E0D73B",
     navBackground: "#fff31d",
     hover: "#c91a52",
-    fontColor: "#000000"
+    fontColor: "#000000",
   },
 
   Anime: {
@@ -52,7 +51,7 @@ export const Themes = {
     itemBg: "#FF9BFC",
     navBackground: "#AE35AA",
     hover: "#FFFFFF",
-    fontColor: "#000000"
+    fontColor: "#000000",
   },
 
   Dark: {
@@ -63,7 +62,6 @@ export const Themes = {
     itemBg: "#495057",
     navBackground: "#000000",
     hover: "#80ffdb",
-    fontColor: "#FFFFFF"
-  }
-  
+    fontColor: "#FFFFFF",
+  },
 };
