@@ -38,7 +38,6 @@ export const Info = styled.div`
   &:hover {
     transform: scale(1.02);
   }
-  
 `;
 
 export const ItemP = styled.p`

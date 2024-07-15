@@ -1,18 +1,36 @@
 .user-info {
 
   .delete{
-      padding: 0.3rem;
-      border-radius: 5px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      transition: transform 0.2s ease;
-      border: none;
-      background-color:#ee5161;
-      font-size: 1rem;
-      &:hover{
-        transform: scale(1.1);
-        cursor: pointer;
-      }
+    padding: 0.3rem;
+    margin: 5px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+    border: none;
+    background-color:#FF204E;
+    color: white;
+    font-size: 1rem;
+    &:hover{
+      transform: scale(1.1);
+      cursor: pointer;
     }
+  }
+
+  .update{
+    padding: 0.3rem;
+    margin: 5px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+    border: none;
+    background-color:#1B1A55;
+    color: white;
+    font-size: 1rem;
+    &:hover{
+      transform: scale(1.1);
+      cursor: pointer;
+    }
+  }
   }
 
   @media(max-width:850px){
@@ -30,12 +48,11 @@
 
   @media(max-width:450px){
     .user-info{
-      
       margin: 1rem;
       p{
         font-size: 1rem;
       }
-      .delete{
+      .delete,.update{
         font-size: 0.8rem;
       }
     }
