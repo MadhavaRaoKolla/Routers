@@ -33,14 +33,18 @@
 
 @media (max-width:440px){
     .login{
+        padding: 10px;
         width: 20rem;
         .form{
             h1{
                 margin: 0.5rem;
             }
             input[type="text"],input[type="password"]{
-                padding: 5px 0;
+                padding: 2px 0;
                 width: 15rem;
+            }
+            button{
+                margin: 0;
             }
         }
         a{
