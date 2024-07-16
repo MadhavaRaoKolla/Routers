@@ -1,44 +1,63 @@
-.student{
-  display: flex;
-  margin: 2rem;
-
-  .data {
-      input[type="text"],input[type="email"],
-      textarea {
-        padding: 0.4rem;
-        margin-bottom: 1rem;
-        border: 1px solid #ced4da;
-        background-color:#e4e4e4;
-        border-radius: 5px;
-        font-size: 1rem;
-      }
-  
-      input[type="radio"] {
-        margin-right: 0.3rem;
-      }
-  
-      input[type="submit"] {
-          padding: 0.5rem;
-          border: none;
-          border-radius: 10px;
-          font-size: 1rem;
-          background-color: #3a7bd5;
-          color: white;
-          cursor: pointer;
-          width: 5rem;
-          margin-left: 40%;
-          transition: transform 0.3s ease;
-  
-          &:hover{
-              transform: scale((1.1));
-          }
-      }
-  
-      textarea {
-        resize: vertical;
-        height: 5rem;
-      }
+.form{
+  .dropdown{
+    margin: 0 2rem;
+    padding: 10px;
+    display: flex;
+    justify-content: end;
+    gap: 8px;
+    font-style: Noto Sans;
+    
+    select,input{
+      padding: 5px;
+      border: 1px solid #addbe4;
+      background-color:#ede7e7;
+      border-radius: 5px;
+      font-style: Noto Sans;
     }
+  }
+
+  .student{
+    display: flex;
+    margin: 1rem 2rem;
+  
+    .data {
+        input[type="text"],input[type="email"],
+        textarea {
+          padding: 0.4rem;
+          margin-bottom: 1rem;
+          border: 1px solid #ced4da;
+          background-color:#e4e4e4;
+          border-radius: 5px;
+          font-size: 1rem;
+        }
+    
+        input[type="radio"] {
+          margin-right: 0.3rem;
+        }
+    
+        input[type="submit"] {
+            padding: 0.5rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            background-color: #3a7bd5;
+            color: white;
+            cursor: pointer;
+            width: 5rem;
+            margin-left: 40%;
+            transition: transform 0.3s ease;
+    
+            &:hover{
+                transform: scale((1.1));
+            }
+        }
+    
+        textarea {
+          resize: vertical;
+          height: 5rem;
+        }
+      }
+  }
 }
 
 @media(max-width:850px){

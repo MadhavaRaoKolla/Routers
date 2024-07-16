@@ -5,8 +5,13 @@ import { AuthContext } from "../../Context/Auth";
 import { Data, Label, P } from "../StyledComponents/FormComp";
 
 const Form = () => {
+
   const { user } = useContext(AuthContext);
   const [data, setData] = useState([]);
+  const [search,setSearch] = useState(''); //input field
+  const [filter,setFilter] = useState(''); //dropdown
+  const [editId, setEditId] = useState(null);
+
   const [formData, setFormData] = useState({
     firstname: "",
     lastname: "",
@@ -14,8 +19,6 @@ const Form = () => {
     gender: "",
     about: "",
   });
-
-  const [editId, setEditId] = useState(null);
 
   //fetching data to display in the same page
   useEffect(() => {
@@ -43,6 +46,15 @@ const Form = () => {
     setEditId(item.id);
   };
 
+  const handleFilterChange = (e) => {
+    setFilter(e.target.value);
+  }
+
+  const filteredData = data.filter(item => {
+    if(!filter || !search) return true; 
+    return item[filter].toLowerCase().includes(search.toLowerCase());
+  });
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!user) return;
@@ -61,7 +73,7 @@ const Form = () => {
 
       if (editId) {
         const udpatedData = data.map(
-          (item) => (item.id === editId ? newData : item) //replacing existing object with updated object
+          (item) => (item.id === editId ? newData : item) //replacing
         );
         setData(udpatedData);
         setEditId(null);
@@ -94,29 +106,46 @@ const Form = () => {
   };
 
   return (
-    <div className='student'>
-    <Data onSubmit={handleSubmit} className='data'>
-      <P>Student details form:</P>
-      <Label>First Name</Label>
-        <input type="text" name='firstname' value={formData.firstname} onChange={handleChange} />
-      <Label>Last Name</Label>
-        <input type="text" name='lastname' value={formData.lastname} onChange={handleChange} />
-      <Label>Email</Label>
-        <input type="email" name='email' value={formData.email} onChange={handleChange} />
-      <Label>Gender</Label>
-      <Label>
-        <input type="radio" name='gender' value='Male' checked={formData.gender === 'Male'} onChange={handleChange} />Male
-      </Label>
-      <Label>
-        <input type="radio" name='gender' value='Female' checked={formData.gender === 'Female'} onChange={handleChange} />Female
-      </Label>
-      <Label>About</Label>
-        <textarea name="about" value={formData.about} onChange={handleChange} required></textarea>
-        <input type="submit" value={editId ? 'Update' : 'Submit'}/>
-      </Data>
-    <div className="item">
-      {data && <Item data={data} handleDelete={handleDelete} handleEdit={handleEdit}/>}
-    </div>
+    <div className="form">
+      {user.role === 'Admin' && (
+        <div className="dropdown">
+          <Label htmlFor="">Filter</Label>
+          <select onChange={handleFilterChange}>
+            <option value="">--filter by--</option>
+            <option value="firstname">First Name</option>
+            <option value="lastname">Last Name</option>
+            <option value="email">Email</option>
+            <option value="gender">Gender</option>
+          </select>
+          <input type="text" onChange={(e)=>{setSearch(e.target.value)}}/>
+      </div>
+      )}
+
+      <div className='student'>
+        <Data onSubmit={handleSubmit} className='data'>
+          <P>Student details form:</P>
+          <Label>First Name</Label>
+            <input type="text" name='firstname' value={formData.firstname} onChange={handleChange} />
+          <Label>Last Name</Label>
+            <input type="text" name='lastname' value={formData.lastname} onChange={handleChange} />
+          <Label>Email</Label>
+            <input type="email" name='email' value={formData.email} onChange={handleChange} />
+          <Label>Gender</Label>
+          <Label>
+            <input type="radio" name='gender' value='Male' checked={formData.gender === 'Male'} onChange={handleChange} />Male
+          </Label>
+          <Label>
+            <input type="radio" name='gender' value='Female' checked={formData.gender === 'Female'} onChange={handleChange} />Female
+          </Label>
+          <Label>About</Label>
+            <textarea name="about" value={formData.about} onChange={handleChange} required></textarea>
+            <input type="submit" value={editId ? 'Update' : 'Submit'}/>
+        </Data>
+
+        <div className="item">
+          {data && <Item data={filteredData} handleDelete={handleDelete} handleEdit={handleEdit}/>}
+        </div>
+      </div>
     </div>
   );
 };
