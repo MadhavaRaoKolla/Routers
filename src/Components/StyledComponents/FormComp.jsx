@@ -9,7 +9,7 @@ export const Data = styled.form`
   width: 25rem;
   display: flex;
   flex-direction: column;
-  margin: 0rem 1rem;
+  margin: 0 1rem;
 `;
 
 export const P = styled.p`
@@ -28,7 +28,7 @@ export const Label = styled.label`
 
 export const Info = styled.div`
   background-color: ${({ theme }) => theme.itemBg};
-  padding: 1rem;
+  padding: 6px 1rem;
   width: 25rem;
   border-radius: 5px;
   box-shadow: 0 0px 5px ${({ theme }) => theme.fontColor};
@@ -41,7 +41,7 @@ export const Info = styled.div`
 `;
 
 export const ItemP = styled.p`
-  margin-bottom: 0.5rem;
-  font-size: 1.2rem;
+  margin-bottom: 5px;
+  font-size: 1.1rem;
   color: ${({ theme }) => theme.fontColor};
 `;

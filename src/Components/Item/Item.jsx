@@ -11,6 +11,8 @@ const Item = ({ data, handleDelete, handleEdit }) => {
             <Info className='user-info' key={item.id}>
               <ItemP>First Name: {item.firstname}</ItemP>
               <ItemP>Last Name: {item.lastname}</ItemP>
+              <ItemP>Gender: {item.gender}</ItemP>
+              <ItemP>Email: {item.email}</ItemP>
               <ItemP>About: {item.about}</ItemP>
               { user.role==='Admin' && (
                 <>
