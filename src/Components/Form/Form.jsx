@@ -5,12 +5,12 @@ import { AuthContext } from "../../Context/Auth";
 import { Data, Label, P } from "../StyledComponents/FormComp";
 
 const Form = () => {
-
   const { user } = useContext(AuthContext);
   const [data, setData] = useState([]);
-  const [search,setSearch] = useState(''); //input field
-  const [filter,setFilter] = useState(''); //dropdown
   const [editId, setEditId] = useState(null);
+  const [search, setSearch] = useState(""); //input field
+  const [filter, setFilter] = useState(""); //dropdown
+  const [sort, setSort] = useState(""); //sorting
 
   const [formData, setFormData] = useState({
     firstname: "",
@@ -46,13 +46,14 @@ const Form = () => {
     setEditId(item.id);
   };
 
-  const handleFilterChange = (e) => {
-    setFilter(e.target.value);
-  }
+  const filteredData = data.filter((item) => {
+    if (!filter || !search) return true;
+    return item[filter].includes(search);
+    // return item[filter].toLowerCase().includes(search.toLowerCase()); //male in female
+  });
 
-  const filteredData = data.filter(item => {
-    if(!filter || !search) return true; 
-    return item[filter].toLowerCase().includes(search.toLowerCase());
+  const sortedData = filteredData.sort((a, b) => {
+    return a[sort]?.toLowerCase() > b[sort]?.toLowerCase() ? 1 : -1; //sort acc to dropdown
   });
 
   const handleSubmit = async (e) => {
@@ -72,10 +73,10 @@ const Form = () => {
       const newData = await response.json();
 
       if (editId) {
-        const udpatedData = data.map(
+        const updatedData = data.map(
           (item) => (item.id === editId ? newData : item) //replacing
         );
-        setData(udpatedData);
+        setData(updatedData);
         setEditId(null);
       } else {
         setData([...data, newData]); //setting new object into array of objects to display
@@ -107,25 +108,38 @@ const Form = () => {
 
   return (
     <div className="form">
-      {user.role === 'Admin' && (
-        <div className="dropdown">
-          <Label htmlFor="">Filter</Label>
-          <select onChange={handleFilterChange}>
-            <option value="">--filter by--</option>
-            <option value="firstname">First Name</option>
-            <option value="lastname">Last Name</option>
-            <option value="email">Email</option>
-            <option value="gender">Gender</option>
-          </select>
-          <input type="text" onChange={(e)=>{setSearch(e.target.value)}}/>
-      </div>
+      {user.role === "Admin" && (
+        <>
+          <div className="dropdown">
+            <Label>Filter :</Label>
+            <select onChange={(e) => {setFilter(e.target.value);}} >
+              <option value="">--filter by--</option>
+              <option value="firstname">First Name</option>
+              <option value="lastname">Last Name</option>
+              <option value="email">Email</option>
+              <option value="gender">Gender</option>
+            </select>
+            <input type="text" onChange={(e) => { setSearch(e.target.value); }} />
+          </div>
+
+          <div className="dropdown">
+            <Label>Sort :</Label>
+            <select onChange={(e) => { setSort(e.target.value); }}>
+              <option value="">--Sort by--</option>
+              <option value="firstname">First Name</option>
+              <option value="lastname">Last Name</option>
+              <option value="email">Email</option>
+              <option value="gender">Gender</option>
+            </select>
+          </div>
+        </>
       )}
 
       <div className='student'>
         <Data onSubmit={handleSubmit} className='data'>
           <P>Student details form:</P>
           <Label>First Name</Label>
-            <input type="text" name='firstname' value={formData.firstname} onChange={handleChange} />
+            <input type="text" name='firstname' value={formData.firstname} onChange={handleChange} />            
           <Label>Last Name</Label>
             <input type="text" name='lastname' value={formData.lastname} onChange={handleChange} />
           <Label>Email</Label>
@@ -141,9 +155,8 @@ const Form = () => {
             <textarea name="about" value={formData.about} onChange={handleChange} required></textarea>
             <input type="submit" value={editId ? 'Update' : 'Submit'}/>
         </Data>
-
         <div className="item">
-          {data && <Item data={filteredData} handleDelete={handleDelete} handleEdit={handleEdit}/>}
+          {data && <Item data={sortedData} handleDelete={handleDelete} handleEdit={handleEdit}/>}
         </div>
       </div>
     </div>
