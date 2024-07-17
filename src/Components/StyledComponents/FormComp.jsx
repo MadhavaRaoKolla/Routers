@@ -10,6 +10,9 @@ export const Data = styled.form`
   display: flex;
   flex-direction: column;
   margin: 0 1rem;
+  @media(max-width: 450px){
+    padding: 1rem;
+  }
 `;
 
 export const P = styled.p`

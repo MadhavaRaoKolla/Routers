@@ -8,6 +8,10 @@ export const Navbar = styled.div`
   border-bottom: 1px solid #7f7d7d;
   height: 4rem;
   background-color: ${({ theme }) => theme.navBackground};
+  
+  @media(max-width: 450px){
+    height: 3.5rem;
+  }
 `;
 
 export const Title = styled.h1`
@@ -32,12 +36,15 @@ export const Image = styled.img`
 `;
 
 export const StyledLink = styled(Link)`
-  margin-left: 1rem;
+  margin-left: 10px;
   text-decoration: none;
   padding: 3px;
   font-size: 1.5rem;
   color: ${({ theme }) => theme.fontColor};
   &:hover {
     color: ${({ theme }) => theme.hover};
+  }
+  @media(max-width: 434px){
+    padding: 0 3px;
   }
 `;

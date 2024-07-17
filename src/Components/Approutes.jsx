@@ -22,8 +22,8 @@ const Approutes = () => {
         { path: "profile", element: <Profile /> },
       ],
     },
-    { path: "/register", element: <Register /> },
-    { path: "/login", element: <Login /> },
+    { path: "register", element: <Register /> },
+    { path: "login", element: <Login /> },
     { path: "*", element: <Error /> },
   ]);
 

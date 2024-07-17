@@ -6,9 +6,9 @@ export const Loginbox = styled.div`
   justify-content: center;
   flex-direction: column;
   margin-top: 40%;
-  height: 45vh;
-  width: 26rem;
-  padding: 0 2rem;
+  height: 50vh;
+  width: 22rem;
+  padding: 0 4rem;
   border-radius: 8px;
   box-shadow: 0 5px 10px rgba(7, 7, 7, 0.5);
   border: 1px solid #ccc;
@@ -33,6 +33,10 @@ export const Button = styled.button`
 
   &:hover {
     transform: scale(1.1);
+  }
+  @media (max-width: 400px){
+    padding: 5px;
+    margin-top: 5px;
   }
 `;
 
