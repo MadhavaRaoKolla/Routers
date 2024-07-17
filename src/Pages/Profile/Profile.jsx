@@ -130,10 +130,20 @@ const ProfileDiv = styled.div`
     align-items: center;
     padding: 1rem;
     border-radius: 10px;
-    min-width: 40rem;
+    width: 40rem;
     box-shadow: 0px 0px 2px ${({theme}) => theme.fontColor};
     background: linear-gradient(100deg, ${({theme}) => theme.loginSignupForm}, ${({theme}) => theme.profileSecondColor});  
     font-weight: bold;
+   
+    @media(max-width: 605px){
+        width: 30rem;
+    }
+    @media(max-width: 515px){
+        width: 20rem;
+    }
+    @media(max-width: 350px){
+        width: 15rem;
+    }
 `;
 
 export default Profile
