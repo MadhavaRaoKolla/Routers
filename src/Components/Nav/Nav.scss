@@ -1,11 +1,11 @@
 .navbar{
-   width: 100%;
+  //  width: 100%;
    .links {
-      margin-left: auto;
+      margin-left: auto;      
     }
 }
 
-@media(max-width:600px){
+@media(max-width:613px){
   .navbar{
     padding: 0.5rem;
     h1{
@@ -24,7 +24,7 @@
   }
 }
 
-@media(max-width:496px){
+@media(max-width:515px){
   .navbar{
     padding: 0;
     h1{
@@ -40,6 +40,14 @@
   .navbar{
     h1{
       font-size: 1rem;
+    }
+  }
+}
+@media(max-width:415px){
+  .navbar{
+    padding: 0;
+    h1{
+      font-size: 0.8rem;
     }
   }
 }

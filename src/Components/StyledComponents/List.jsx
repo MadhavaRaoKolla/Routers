@@ -16,6 +16,11 @@ export const DisplayButton = styled.div`
     padding: 0 2px;
     font-size: 0.8rem;
   }
+  @media(max-width: 358px){
+    padding: 0 1px;
+    font-size: 0.7rem;
+  }
+  
 `;
 
 export const Circle = styled.div`
@@ -27,6 +32,10 @@ export const Circle = styled.div`
   @media(max-width: 496px){
     width:10px;
     height:10px;
+  }
+  @media(max-width: 358px){
+    width:8px;
+    height:8px;
   }
 `;
 
@@ -48,5 +57,9 @@ export const Option = styled.div`
   color: ${({ theme }) => theme.fontColor};
   &:hover {
     background-color: #aca6a6;
+  }
+  @media(max-width:358px){
+    font-size: 0.7rem;
+    padding: 0;
   }
 `;

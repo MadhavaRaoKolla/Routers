@@ -12,6 +12,9 @@ export const Navbar = styled.div`
   @media(max-width: 450px){
     height: 3.5rem;
   }
+  @media(max-width: 415px){
+    padding: 5px;
+}
 `;
 
 export const Title = styled.h1`
@@ -24,6 +27,7 @@ export const Button = styled.button`
   background: transparent;
   border: none;
   padding: 0 10px;
+  align-items: center;
 `;
 
 export const Image = styled.img`
@@ -32,6 +36,10 @@ export const Image = styled.img`
   padding: 3px 1px 0 1px;
   &:hover {
     cursor: pointer;
+  }
+  @media(max-width: 515px){
+    height: 1.5rem;
+    width: 1.5rem;
   }
 `;
 
