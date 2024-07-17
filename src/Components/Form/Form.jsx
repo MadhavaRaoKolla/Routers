@@ -48,14 +48,15 @@ const Form = () => {
 
   const filteredData = data.filter((item) => {
     if (!filter || !search) return true;
+    if(filter === 'gender')
     return item[filter].includes(search);
-    // return item[filter].toLowerCase().includes(search.toLowerCase()); //male in female
+    return item[filter].toLowerCase().includes(search.toLowerCase()); //male in female
   });
 
   const sortedData = filteredData.sort((a, b) => {
     return a[sort]?.toLowerCase() > b[sort]?.toLowerCase() ? 1 : -1; //sort acc to dropdown
   });
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!user) return;
@@ -108,8 +109,6 @@ const Form = () => {
 
   return (
     <div className="form">
-      {user.role === "Admin" && (
-        <>
           <div className="dropdown">
             <Label>Filter :</Label>
             <select onChange={(e) => {setFilter(e.target.value);}} >
@@ -132,9 +131,7 @@ const Form = () => {
               <option value="gender">Gender</option>
             </select>
           </div>
-        </>
-      )}
-
+          
       <div className='student'>
         <Data onSubmit={handleSubmit} className='data'>
           <P>Student details form:</P>

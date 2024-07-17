@@ -1,45 +1,57 @@
-import React, { useState, useContext } from 'react';
-import './Register.scss';
-import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../Context/Auth';
-import bcrypt from 'bcryptjs';
-import {Button,Formgroup,Signup,StyleLink,Title} from '../../Components/StyledComponents/LoginSignup'
+import React, { useState, useContext } from "react";
+import "./Register.scss";
+import { Navigate, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Context/Auth";
+import bcrypt from "bcryptjs";
+import {
+  Button,
+  Formgroup,
+  Signup,
+  StyleLink,
+  Title,
+} from "../../Components/StyledComponents/LoginSignup";
 
 const Register = () => {
   const [userdata, setUserData] = useState({
-    firstname: '',
-    lastname: '',
-    username: '',
-    dob: '',
-    gender: '',
-    email: '',
-    role:'',
-    password: '',
-    confirmpassword: ''
+    firstname: "",
+    lastname: "",
+    username: "",
+    dob: "",
+    gender: "",
+    email: "",
+    role: "",
+    password: "",
+    confirmpassword: "",
   });
 
   const [errors, setErrors] = useState({});
-  const { login } = useContext(AuthContext);
+  const { login,user} = useContext(AuthContext);
   const navigate = useNavigate();
+
+  if(user && window.location.pathname === '/register')
+    return <Navigate to='/' />
 
   const handleChange = (e) => {
     setUserData({
-      ...userdata, [e.target.name]: e.target.value
+      ...userdata,
+      [e.target.name]: e.target.value,
     });
   };
 
   const validate = () => {
     let errors = {};
-    if (!userdata.firstname) errors.firstname = 'First Name is required';
-    if (!userdata.lastname) errors.lastname = 'Last Name is required';
-    if (!userdata.username) errors.username = 'Username is required';
-    if (!userdata.dob) errors.dob = 'Date of birth is required';
-    if (!userdata.gender) errors.gender = 'Gender is required';
-    if (!userdata.email) errors.email = 'Email is required';
-    if (!userdata.role) errors.role="Role is Required";
-    if (!userdata.password) errors.password = 'Password is required';
-    if (!userdata.confirmpassword) errors.confirmpassword = 'Confirm Password is required';
-    if (userdata.password !== userdata.confirmpassword) errors.confirmpassword = 'Passwords do not match';
+    if (!userdata.firstname) errors.firstname = "First Name is required";
+    if (!userdata.lastname) errors.lastname = "Last Name is required";
+    if (!userdata.username) errors.username = "Username is required";
+    if (!userdata.dob) errors.dob = "Date of birth is required";
+    if (!userdata.gender) errors.gender = "Gender is required";
+    if (!userdata.email) errors.email = "Email is required";
+    if (!userdata.role) errors.role = "Role is Required";
+    if (!userdata.password) errors.password = "Password is required";
+    if (!userdata.confirmpassword)
+      errors.confirmpassword = "Confirm Password is required";
+    if (userdata.password !== userdata.confirmpassword)
+      errors.confirmpassword = "Passwords do not match";
     setErrors(errors);
     return Object.keys(errors).length === 0;
   };
@@ -48,55 +60,59 @@ const Register = () => {
     e.preventDefault();
     if (!validate()) return;
     try {
-      const response = await fetch('http://localhost:7000/data');
+      const response = await fetch("http://localhost:7000/data");
       const users = await response.json();
       let userExists = false;
-      for (let i=0; i<users.length; i++) {
+      for (let i = 0; i < users.length; i++) {
         if (users[i].email === userdata.email) {
           userExists = true;
           break;
         }
       }
       if (userExists) {
-        alert('User already exists. Please try with a new email.');
+        alert("User already exists. Please try with a new email.");
         setUserData({
-          firstname: '',
-          lastname: '',
-          username: '',
-          dob: '',
-          gender: '',
-          email: '',
-          role:'',
-          password: '',
-          confirmpassword: ''
+          firstname: "",
+          lastname: "",
+          username: "",
+          dob: "",
+          gender: "",
+          email: "",
+          role: "",
+          password: "",
+          confirmpassword: "",
         });
         return;
       }
 
-      const hashedPassword = await bcrypt.hash(userdata.password,10);
-      const newUserData = {...userdata,password:hashedPassword,confirmpassword:hashedPassword}
+      const hashedPassword = await bcrypt.hash(userdata.password, 10);
+      const newUserData = {
+        ...userdata,
+        password: hashedPassword,
+        confirmpassword: hashedPassword,
+      };
 
-      const newData = await fetch('http://localhost:7000/data', {
-        method: 'POST',
+      const newData = await fetch("http://localhost:7000/data", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(newUserData)
+        body: JSON.stringify(newUserData),
       });
-      const newUser = await newData.json(); 
+      const newUser = await newData.json();
       login(newUser);
       setUserData({
-        firstname: '',
-        lastname: '',
-        username: '',
-        dob: '',
-        gender: '',
-        email: '',
-        role:'',
-        password: '',
-        confirmpassword: ''
+        firstname: "",
+        lastname: "",
+        username: "",
+        dob: "",
+        gender: "",
+        email: "",
+        role: "",
+        password: "",
+        confirmpassword: "",
       });
-      navigate('/');
+      navigate("/");
     } catch (err) {
       console.log("Error is:", err);
     }

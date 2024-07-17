@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import './Login.scss';
 import { AuthContext } from '../../Context/Auth';
 import bcrypt from 'bcryptjs';
@@ -8,8 +8,11 @@ import { Loginbox,Button,Title, Label, StyleLink } from '../../Components/Styled
 const Login = () => {
   const [errors, setErrors] = useState({});
   const [data, setData] = useState({ username: '', password: '' });
-  const { login } = useContext(AuthContext);
+  const { login,user } = useContext(AuthContext);
   const navigate = useNavigate();
+
+  if(user && window.location.pathname==='/login')
+    return <Navigate to='/' />
 
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
@@ -31,7 +34,6 @@ const Login = () => {
       .then(users => {
         let userExists = false;
         for (let i=0; i<users.length; i++) {
-          // if(users[i].username === data.username && users[i].password === data.password) {
           if(users[i].username === data.username){
             const isMatch = bcrypt.compare(data.password,users[i].password)
               if(isMatch){
@@ -66,7 +68,9 @@ const Login = () => {
           <Button>Submit</Button>
         </div>
       </form>
-      <StyleLink to="/register">Don't have an account? Let's Signup</StyleLink>
+      <Label> Dont have an account?
+        <StyleLink to="/register"> Let's Signup!</StyleLink>
+      </Label>
       </Loginbox>
   );
 }

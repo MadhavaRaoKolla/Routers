@@ -7,7 +7,6 @@
 
 @media(max-width:600px){
   .navbar{
-    height: 4rem;
     padding: 0.5rem;
     h1{
       font-size: 1.7rem;
@@ -25,14 +24,21 @@
   }
 }
 
-@media(max-width:375px){
+@media(max-width:496px){
   .navbar{
-    height: 3rem;
     padding: 0;
     h1{
       font-size: 1.3rem;
     }
     .button,a{
+      font-size: 1rem;
+    }
+  }
+}
+
+@media(max-width:434px){
+  .navbar{
+    h1{
       font-size: 1rem;
     }
   }
