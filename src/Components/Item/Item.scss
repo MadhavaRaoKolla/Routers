@@ -33,20 +33,20 @@
   }
   }
 
-  @media(max-width:850px){
+  @media(max-width:880px){
     .user-info{
       width: 20rem;
     }
   }
 
-  @media(max-width:770px){
+  @media(max-width:800px){
     .user-info{
       width: 25rem;
       margin: 1rem;
     }
   }
 
-  @media(max-width:450px){
+  @media(max-width:485px){
     .user-info{
       margin: 1rem;
       p{
@@ -57,3 +57,4 @@
       }
     }
   }
+  
