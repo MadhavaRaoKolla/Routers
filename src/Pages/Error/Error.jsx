@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 import "./Error.scss";
 import styled from "styled-components";
 import { Title } from "../../Components/StyledComponents/LoginSignup";
+import Errorpic from '../../assets/error.png'
 
 const Error = () => {
   return (
     <div className="error">
+    <img src={Errorpic} alt="404" />
       <Title>I dont have that page</Title>
       <StyledLink to="/">Click here</StyledLink>
     </div>

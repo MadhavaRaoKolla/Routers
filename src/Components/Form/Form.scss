@@ -1,4 +1,5 @@
 .form{
+  margin: 10px;
   .dropdown{
     margin: 0 3rem;
     padding: 10px;
@@ -19,7 +20,7 @@
   .student{
     display: flex;
     margin: 1rem 2rem;
-  
+
     .data {
         input[type="text"],input[type="email"],
         textarea {
@@ -60,7 +61,7 @@
   }
 }
 
-@media(max-width:850px){
+@media(max-width:880px){
   .student{
     .data{
       p{
@@ -71,7 +72,7 @@
   }
 }
 
-@media(max-width:770px){
+@media(max-width:800px){
   .student{
     flex-direction: column;
     .data{
@@ -80,21 +81,53 @@
   }
 }
 
-@media(max-width:450px){
-  .student{
-    flex-direction: column;
-    .data{
-      width: 20rem;
-      height: 35rem;
-      input[type="text"],input[type="email"]{
-        padding: 0.2rem 0; 
-      }
-      div{
-        font-size: 1rem;
-      }
-      input[type="submit"]{
-        margin-left: 30%;
+@media(max-width:485px){
+  .form{
+    .student{
+      flex-direction: column;
+      padding: 1rem;
+      .data{
+        width: 20rem;
+        height: 35rem;
+        input[type="text"],input[type="email"]{
+          padding: 0.2rem 0; 
+        }
+        div{
+          font-size: 1rem;
+        }
+        input[type="submit"]{
+          margin-left: 30%;
+        }
       }
     }
+    .dropdown{
+      padding: 0;
+      margin: 1rem 3rem ;
+      select,input{
+        padding: 2px;
+      }
+      input{
+        width: 8rem;
+      }
+    }
+  }
+}
+
+@media(max-width:400px){
+  .form{
+    .dropdown{
+      margin: 1rem 4rem;
+      label{
+        font-size: 1rem;
+      }
+      gap: 4px;
+      select,input{
+        padding: 0;
+      }
+      input{
+        width: 6rem;
+      }
+    }
+    
   }
 }
