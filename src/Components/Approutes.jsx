@@ -28,7 +28,7 @@ const Approutes = () => {
   ]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <center>Loading...</center>;
   }
 
   return <>{routes}</>;

@@ -13,6 +13,7 @@
     "start": "concurrently \"npm run server1\" \"npm run server2\" \"npm run dev\" "
   },
   "dependencies": {
+    "@auth0/auth0-react": "^2.2.4",
     "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
     "concurrently": "^8.2.2",
