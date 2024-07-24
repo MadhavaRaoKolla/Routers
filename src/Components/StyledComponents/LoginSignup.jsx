@@ -34,7 +34,7 @@ export const Button = styled.button`
   &:hover {
     transform: scale(1.1);
   }
-  @media (max-width: 400px){
+  @media (max-width: 400px) {
     padding: 5px;
     margin-top: 5px;
   }

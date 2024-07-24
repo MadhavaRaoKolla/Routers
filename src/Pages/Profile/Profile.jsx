@@ -1,9 +1,18 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect, useDebugValue } from "react";
 import "./Profile.scss";
 import { AuthContext } from "../../Context/Auth";
 import { useNavigate } from "react-router";
 import { ItemP, P } from "../../Components/StyledComponents/FormComp";
 import styled from "styled-components";
+import { db, auth } from "../../Components/firebase";
+import {
+  collection,
+  deleteDoc,
+  doc,
+  getDocs,
+  updateDoc,
+} from "firebase/firestore";
+import { deleteUser } from "firebase/auth";
 
 const Profile = () => {
   const { user, login, logout } = useContext(AuthContext); //local storage user
@@ -28,67 +37,53 @@ const Profile = () => {
   };
 
   const handleSubmit = async () => {
+    //updating existing user values
     try {
-      const response = await fetch(
-        `http://localhost:7000/data?email=${user.email}`
-      );
-      const [existingUser] = await response.json(); //array of object, existinguser is object in array
-      if (existingUser) {
-        const updatedUser = { ...existingUser, ...updates }; //existinguser values updated by updates
-        await fetch(`http://localhost:7000/data/${existingUser.id}`, {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(updatedUser),
-        });
-        login(updatedUser);
-        navigate("/");
-      }
+      const userRef = doc(db, "Users", auth.currentUser.uid);
+      await updateDoc(userRef, {
+        firstname: updates.firstname,
+        lastname: updates.lastname,
+        username: updates.username,
+        email: updates.email,
+        dob: updates.dob,
+      });
+      login({ ...user, ...updates });
+      navigate("/");
     } catch (err) {
       console.log("error is:", err);
     }
   };
 
   const handleDelete = async () => {
-    //deleting data of inner form
     try {
-      const data = await fetch(
-        `http://localhost:3000/data/?user_id=${user.id}`
-      );
-      const userData = await data.json();
-      if (!userData) throw new Error("Fetching Failed....");
-      for (let i = 0; i < userData.length; i++) {
-        try {
-          const del = await fetch(
-            `http://localhost:3000/data/${userData[i].id}`,
-            {
-              method: "DELETE",
-            }
-          );
-          if (!del.ok) {
-            throw new Error("Deleting Failed...");
-          }
-        } catch (error) {
-          console.log("Error:", error);
+      //deleting items of users from Forms
+      const querySnapshot = await getDocs(collection(db, "Forms"));
+      const userData = [];
+      querySnapshot.forEach((doc) => {
+        userData.push({ ...doc.data(), id: doc.id });
+      });
+      for (const item of userData) {
+        if (item.uid === auth.currentUser.uid) {
+          const delUser = doc(db, "Forms", item.id);
+          await deleteDoc(delUser);
         }
       }
-    } catch (error) {
-      console.log("error:", error);
-    }
 
-    //deleting user details
-    try {
-      const data = await fetch(`http://localhost:7000/data/${user.id}`, {
-        method: "DELETE",
-      });
-      if (!data.ok) throw new Error("User deleting failed...");
+      //deleting user from Users
+      const userRef = doc(db, "Users", auth.currentUser.uid);
+      await deleteDoc(userRef);
+      await deleteUser(auth.currentUser)
+        .then(() => {
+          // alert("Account Deleted successfully!");
+        })
+        .catch((err) => {
+          console.log("Error in deleting auth", err);
+        });
       localStorage.removeItem("user");
       logout();
-    } catch (error) {
-      console.log("Error", error);
+    } catch (err) {
+      console.log("error is", err);
     }
-    navigate("/register");
   };
 
   if (!user) return <div>Loading...</div>;

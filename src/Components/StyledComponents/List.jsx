@@ -11,16 +11,15 @@ export const DisplayButton = styled.div`
   font-size: 1rem;
   border-radius: 5px;
   color: ${({ theme }) => theme.fontColor};
-  
-  @media(max-width: 496px){
+
+  @media (max-width: 496px) {
     padding: 0 2px;
     font-size: 0.8rem;
   }
-  @media(max-width: 358px){
+  @media (max-width: 358px) {
     padding: 0 1px;
     font-size: 0.7rem;
   }
-  
 `;
 
 export const Circle = styled.div`
@@ -29,13 +28,13 @@ export const Circle = styled.div`
   border-radius: 50%;
   border: 1px solid ${({ theme }) => theme.fontColor};
   background-color: ${({ theme }) => theme.navBackground};
-  @media(max-width: 496px){
-    width:10px;
-    height:10px;
+  @media (max-width: 496px) {
+    width: 10px;
+    height: 10px;
   }
-  @media(max-width: 358px){
-    width:8px;
-    height:8px;
+  @media (max-width: 358px) {
+    width: 8px;
+    height: 8px;
   }
 `;
 
@@ -58,7 +57,7 @@ export const Option = styled.div`
   &:hover {
     background-color: #aca6a6;
   }
-  @media(max-width:358px){
+  @media (max-width: 358px) {
     font-size: 0.7rem;
     padding: 0;
   }

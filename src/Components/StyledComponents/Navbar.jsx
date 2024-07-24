@@ -8,13 +8,13 @@ export const Navbar = styled.div`
   border-bottom: 1px solid #7f7d7d;
   height: 4rem;
   background-color: ${({ theme }) => theme.navBackground};
-  
-  @media(max-width: 450px){
+
+  @media (max-width: 450px) {
     height: 3.5rem;
   }
-  @media(max-width: 415px){
+  @media (max-width: 415px) {
     padding: 5px;
-}
+  }
 `;
 
 export const Title = styled.h1`
@@ -37,7 +37,7 @@ export const Image = styled.img`
   &:hover {
     cursor: pointer;
   }
-  @media(max-width: 515px){
+  @media (max-width: 515px) {
     height: 1.5rem;
     width: 1.5rem;
   }
@@ -52,7 +52,7 @@ export const StyledLink = styled(Link)`
   &:hover {
     color: ${({ theme }) => theme.hover};
   }
-  @media(max-width: 434px){
+  @media (max-width: 434px) {
     padding: 0 3px;
   }
 `;

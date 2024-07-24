@@ -2,7 +2,6 @@ import React, { useState, useContext, useEffect } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import "./Login.scss";
 import { AuthContext } from "../../Context/Auth";
-import bcrypt from "bcryptjs";
 import {
   Loginbox,
   Button,
@@ -11,10 +10,20 @@ import {
   StyleLink,
 } from "../../Components/StyledComponents/LoginSignup";
 import { useAuth0 } from "@auth0/auth0-react";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth, db } from "../../Components/firebase";
+import {
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  query,
+  where,
+} from "firebase/firestore";
 
 const Login = () => {
   const [errors, setErrors] = useState({});
-  const [data, setData] = useState({ username: "", password: "" });
+  const [data, setData] = useState({ email: "", password: "" });
   const { login, user } = useContext(AuthContext);
   const navigate = useNavigate();
   const { loginWithRedirect } = useAuth0();
@@ -27,7 +36,7 @@ const Login = () => {
 
   const validate = () => {
     let errors = {};
-    if (!data.username) errors.username = "Username is required";
+    if (!data.email) errors.email = "Email is required";
     if (!data.password) errors.password = "Password is required";
     setErrors(errors);
     return Object.keys(errors).length === 0;
@@ -37,29 +46,33 @@ const Login = () => {
     e.preventDefault();
     if (!validate()) return;
     try {
-      const response = await fetch(`http://localhost:7000/data`);
-      const users = await response.json();
-      let userExists = false;
-      for (let i = 0; i < users.length; i++) {
-        if (users[i].username === data.username) {
-          const isMatch = await bcrypt.compare(
-            data.password,
-            users[i].password
-          );
-          if (isMatch) {
-            userExists = true;
-            setData({ username: "", password: "" });
-            alert("Login successful!");
-            login(users[i]);
-            navigate(`/`);
-            break;
-          }
+      //check if user not exists
+      const usersRef = collection(db, "Users");
+      const q = query(usersRef, where("email", "==", data.email));
+      const querySnapshot = await getDocs(q);
+      if (querySnapshot.empty) {
+        setData({ email: "", password: "" });
+        alert("User does not exist, please register");
+        navigate("/register");
+        return;
+      }
+
+      //if user not exists let him in
+      await signInWithEmailAndPassword(auth, data.email, data.password);
+      setData({ email: "", password: "" });
+      auth.onAuthStateChanged(async (user) => {
+        const docRef = doc(db, "Users", user.uid);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          login(docSnap.data());
+          setData({ email: "", password: "" });
+          navigate("/");
+        } else {
+          setData({ email: "", password: "" });
+          alert("User is not registered");
+          navigate("/register");
         }
-      }
-      if (!userExists) {
-        setData({ username: "", password: "" });
-        alert("User does not exist or password is incorrect");
-      }
+      });
     } catch (err) {
       console.log(err);
     }
@@ -69,14 +82,14 @@ const Login = () => {
     <Loginbox className="login">
       <form className="form" onSubmit={handleSubmit}>
         <Title>Login</Title>
-        <Label>UserName :</Label>
+        <Label>Email :</Label>
         <input
           type="text"
-          name="username"
-          value={data.username}
+          name="email"
+          value={data.email}
           onChange={handleChange}
-          className={errors.username ? "error" : ""}
-          placeholder={errors.username ? errors.username : ""}
+          className={errors.email ? "error" : ""}
+          placeholder={errors.email ? errors.email : ""}
         />
         <Label>Password :</Label>
         <input

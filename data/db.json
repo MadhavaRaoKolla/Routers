@@ -23,6 +23,18 @@
       "role": "Admin",
       "password": "$2a$10$3fzC42CO60/AeGRm8MLZXexSoIDqx7Rdr5Z85UH89hOkwKC15WVqi",
       "confirmpassword": "$2a$10$3fzC42CO60/AeGRm8MLZXexSoIDqx7Rdr5Z85UH89hOkwKC15WVqi"
+    },
+    {
+      "id": "5c47",
+      "firstname": "Madhav",
+      "lastname": "Kolla",
+      "username": "madhav",
+      "dob": "2002-06-16",
+      "gender": "Male",
+      "email": "madhavmadhu16062002@gmail.com",
+      "role": "User",
+      "password": "$2a$10$NDr.Mr7wd/.vWKfDXWf9e.LPQOUozIBg4SbE./AZKVohwOJyRF2.y",
+      "confirmpassword": "$2a$10$NDr.Mr7wd/.vWKfDXWf9e.LPQOUozIBg4SbE./AZKVohwOJyRF2.y"
     }
   ]
 }
