@@ -72,7 +72,6 @@ const Login = () => {
       const docRef = doc(db, "Users", authUser.user.uid);
       const docSnap = await getDoc(docRef);
       if (docSnap.exists()) {
-        // linkAccounts();
         login(docSnap.data());
         setData({ email: "", password: "" });
       }
@@ -90,9 +89,9 @@ const Login = () => {
       //     navigate("/register");
       //   }
       // });
-      
+
     } catch (err) {
-      console.log("error is...",err.message);
+      console.log("error is...",err);
     }
   };
 
@@ -137,18 +136,18 @@ const Login = () => {
 
   };
 
-  const linkAccounts = async () => {
-    try {
-      const credential = EmailAuthProvider.credential(
-        data.email,
-        data.password
-      );
-      await linkWithCredential(auth.currentUser, credential);
-      console.log("accounts linked");
-    } catch (error) {
-      console.log("Linking faield...", error);
-    }
-  };
+  // const linkAccounts = async () => {
+  //   try {
+  //     const credential = EmailAuthProvider.credential(
+  //       data.email,
+  //       data.password
+  //     );
+  //     await linkWithCredential(auth.currentUser, credential);
+  //     console.log("accounts linked");
+  //   } catch (error) {
+  //     console.log("Linking faield...", error);
+  //   }
+  // };
 
   return (
     <Loginbox className="login">

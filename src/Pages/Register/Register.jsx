@@ -67,7 +67,7 @@ const Register = () => {
     e.preventDefault();
     if (!validate()) return;
     try {
-      //checking if email already exists
+      //checking if email already exists in db
       const querySnapshot = await getDocs(collection(db, "Users"));
       let userExists = false;
       querySnapshot.forEach((doc) => {
