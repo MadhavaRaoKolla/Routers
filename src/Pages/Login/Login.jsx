@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import "./Login.scss";
 import { AuthContext } from "../../Context/Auth";
@@ -9,8 +9,14 @@ import {
   Label,
   StyleLink,
 } from "../../Components/StyledComponents/LoginSignup";
-import { useAuth0 } from "@auth0/auth0-react";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import {
+  EmailAuthProvider,
+  GoogleAuthProvider,
+  linkWithCredential,
+  linkWithPopup,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+} from "firebase/auth";
 import { auth, db } from "../../Components/firebase";
 import {
   collection,
@@ -18,6 +24,7 @@ import {
   getDoc,
   getDocs,
   query,
+  setDoc,
   where,
 } from "firebase/firestore";
 
@@ -26,7 +33,6 @@ const Login = () => {
   const [data, setData] = useState({ email: "", password: "" });
   const { login, user } = useContext(AuthContext);
   const navigate = useNavigate();
-  const { loginWithRedirect } = useAuth0();
 
   if (user && window.location.pathname === "/login") return <Navigate to="/" />;
 
@@ -46,7 +52,7 @@ const Login = () => {
     e.preventDefault();
     if (!validate()) return;
     try {
-      //check if user not exists
+      //check if user not exists with email and password
       const usersRef = collection(db, "Users");
       const q = query(usersRef, where("email", "==", data.email));
       const querySnapshot = await getDocs(q);
@@ -57,24 +63,90 @@ const Login = () => {
         return;
       }
 
-      //if user not exists let him in
-      await signInWithEmailAndPassword(auth, data.email, data.password);
-      setData({ email: "", password: "" });
-      auth.onAuthStateChanged(async (user) => {
-        const docRef = doc(db, "Users", user.uid);
-        const docSnap = await getDoc(docRef);
-        if (docSnap.exists()) {
-          login(docSnap.data());
-          setData({ email: "", password: "" });
-          navigate("/");
-        } else {
-          setData({ email: "", password: "" });
-          alert("User is not registered");
-          navigate("/register");
-        }
-      });
+      //sign in with email and password
+      const authUser = await signInWithEmailAndPassword(
+        auth,
+        data.email,
+        data.password
+      );
+      const docRef = doc(db, "Users", authUser.user.uid);
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        // linkAccounts();
+        login(docSnap.data());
+        setData({ email: "", password: "" });
+      }
+
+      // await auth.onAuthStateChanged(async (user) => {
+      //   const docRef = doc(db, "Users", user.uid);
+      //   const docSnap = await getDoc(docRef);
+      //   if (docSnap.exists()) {
+      //     login(docSnap.data());
+      //     setData({ email: "", password: "" });
+      //     navigate("/");
+      //   } else {
+      //     setData({ email: "", password: "" });
+      //     alert("User is not registered");
+      //     navigate("/register");
+      //   }
+      // });
+      
     } catch (err) {
-      console.log(err);
+      console.log("error is...",err.message);
+    }
+  };
+
+  const googleLogin = async () => {
+    //add check user already exists in db no need to sign in with google
+    const provider = new GoogleAuthProvider();
+    await signInWithPopup(auth, provider);
+    const googleUser = auth.currentUser;
+    //check if already exists
+    const docRef = doc(db, "Users", googleUser.uid);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) login(docSnap.data());
+    else {
+      await setDoc(doc(db, "Users", googleUser.uid), {
+        email: googleUser.email,
+        firstname: googleUser.displayName,
+        lastname: googleUser.displayName,
+        username: googleUser.displayName,
+        gender: "Male",
+        role: "User",
+        dob: "1947-05-15",
+      });
+      login({
+        email: googleUser.email,
+        firstname: googleUser.displayName,
+        lastname: googleUser.displayName,
+        username: googleUser.displayName,
+        gender: "Male",
+        role: "User",
+        dob: "1947-05-15",
+      });
+    }
+    // await auth.currentUser.linkWithPopup(provider)
+    // linkWithPopup(auth.currentUser, provider)
+    //   .then((result) => {
+    //     const credential = GoogleAuthProvider.credentialFromResult(result);
+    //     console.log("credential...", credential);
+    //     const user = result.user;
+    //     console.log("user...", user);
+    //   })
+    //   .catch((err) => console.log("error", err));
+
+  };
+
+  const linkAccounts = async () => {
+    try {
+      const credential = EmailAuthProvider.credential(
+        data.email,
+        data.password
+      );
+      await linkWithCredential(auth.currentUser, credential);
+      console.log("accounts linked");
+    } catch (error) {
+      console.log("Linking faield...", error);
     }
   };
 
@@ -111,7 +183,7 @@ const Login = () => {
       <button
         className="oauth"
         onClick={() => {
-          loginWithRedirect();
+          googleLogin();
         }}
       >
         Sign in with Google

@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect, useDebugValue } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "./Profile.scss";
 import { AuthContext } from "../../Context/Auth";
 import { useNavigate } from "react-router";
@@ -58,27 +58,16 @@ const Profile = () => {
     try {
       //deleting items of users from Forms
       const querySnapshot = await getDocs(collection(db, "Forms"));
-      const userData = [];
-      querySnapshot.forEach((doc) => {
-        userData.push({ ...doc.data(), id: doc.id });
+      querySnapshot.forEach(async (docSnapshot) => {
+        const data = docSnapshot.data();
+        if (data.uid === auth.currentUser.uid)
+          await deleteDoc(doc(db, "Forms", docSnapshot.id));
       });
-      for (const item of userData) {
-        if (item.uid === auth.currentUser.uid) {
-          const delUser = doc(db, "Forms", item.id);
-          await deleteDoc(delUser);
-        }
-      }
 
       //deleting user from Users
       const userRef = doc(db, "Users", auth.currentUser.uid);
-      await deleteDoc(userRef);
-      await deleteUser(auth.currentUser)
-        .then(() => {
-          // alert("Account Deleted successfully!");
-        })
-        .catch((err) => {
-          console.log("Error in deleting auth", err);
-        });
+      await deleteDoc(userRef); //deletes in authentication
+      await deleteUser(auth.currentUser); //deletes in firestore
       localStorage.removeItem("user");
       logout();
     } catch (err) {

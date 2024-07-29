@@ -20,14 +20,14 @@ export const Loginbox = styled.div`
 `;
 
 export const Button = styled.button`
-  padding: 10px;
+  padding: 8px;
+  margin-bottom: 5px;
   background-color: #3a7bd5;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-size: 1rem;
-  width: 5rem;
   text-align: center;
   transition: transform 0.2s ease;
 
@@ -42,8 +42,9 @@ export const Button = styled.button`
 
 export const Signup = styled.div`
   display: flex;
-  flex-direction: column;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
   margin-top: 20%;
   border-radius: 10px;
   box-shadow: 0 5px 10px rgba(7, 7, 7, 0.5);

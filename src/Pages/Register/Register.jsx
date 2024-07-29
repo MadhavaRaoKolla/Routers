@@ -10,9 +10,13 @@ import {
   StyleLink,
   Title,
 } from "../../Components/StyledComponents/LoginSignup";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from "firebase/auth";
 import { auth, db } from "../../Components/firebase";
-import { setDoc, doc, getDocs, collection } from "firebase/firestore";
+import { setDoc, doc, getDocs, collection, getDoc } from "firebase/firestore";
 
 const Register = () => {
   const [userdata, setUserData] = useState({
@@ -65,45 +69,12 @@ const Register = () => {
     try {
       //checking if email already exists
       const querySnapshot = await getDocs(collection(db, "Users"));
-      const userData = [];
+      let userExists = false;
       querySnapshot.forEach((doc) => {
-        userData.push({ ...doc.data() });
+        const item = doc.data();
+        if (item.email == userdata.email) userExists = true;
       });
-      userData.map((item) => {
-        if (item.email === userdata.email) {
-          setUserData({
-            firstname: "",
-            lastname: "",
-            username: "",
-            dob: "",
-            gender: "",
-            email: "",
-            role: "",
-            password: "",
-            confirmpassword: "",
-          });
-          alert("User already exists!");
-          navigate("/login");
-        }
-      });
-
-      //for firebase auth
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        userdata.email,
-        userdata.password
-      );
-
-      //storing in cloud firestore
-      const firebaseUser = userCredential.user;
-      if (firebaseUser) {
-        await setDoc(doc(db, "Users", firebaseUser.uid), {
-          ...userdata,
-          password: await bcrypt.hash(userdata.password, 10),
-          confirmpassword: await bcrypt.hash(userdata.confirmpassword, 10),
-        });
-
-        login({ ...userdata, uid: firebaseUser.uid });
+      if (userExists) {
         setUserData({
           firstname: "",
           lastname: "",
@@ -115,10 +86,70 @@ const Register = () => {
           password: "",
           confirmpassword: "",
         });
-        navigate("/");
+        alert("User already exists!");
+        navigate("/login");
+      }
+
+      //for firebase auth
+      await createUserWithEmailAndPassword(
+        auth,
+        userdata.email,
+        userdata.password
+      );
+
+      //storing in cloud firestore
+      const firebaseUser = auth.currentUser;
+      if (firebaseUser) {
+        await setDoc(doc(db, "Users", firebaseUser.uid), {
+          ...userdata,
+          password: await bcrypt.hash(userdata.password, 10),
+          confirmpassword: await bcrypt.hash(userdata.confirmpassword, 10),
+        });
+        setUserData({
+          firstname: "",
+          lastname: "",
+          username: "",
+          dob: "",
+          gender: "",
+          email: "",
+          role: "",
+          password: "",
+          confirmpassword: "",
+        });
+        login({ ...userdata });
       }
     } catch (err) {
       console.log("Error is:", err);
+    }
+  };
+
+  const googleSignup = async () => {
+    const provider = new GoogleAuthProvider();
+    await signInWithPopup(auth, provider);
+    const googleUser = auth.currentUser;
+    //check if user already exists
+    const docRef = doc(db, "Users", googleUser.uid);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) login(docSnap.data()); //if exists loggs in
+    else {
+      await setDoc(doc(db, "Users", googleUser.uid), {
+        email: googleUser.email,
+        firstname: googleUser.displayName,
+        lastname: googleUser.displayName,
+        username: googleUser.displayName,
+        gender: "Male",
+        role: "User",
+        dob: "1947-05-15",
+      });
+      login({
+        email: googleUser.email,
+        firstname: googleUser.displayName,
+        lastname: googleUser.displayName,
+        username: googleUser.displayName,
+        gender: "Male",
+        role: "User",
+        dob: "1947-05-15",
+      });
     }
   };
 
@@ -256,6 +287,7 @@ const Register = () => {
           <Button>Submit</Button>
         </div>
       </form>
+      <Button onClick={googleSignup}>SignUp with Google</Button>
       <StyleLink to="/login">Existing User</StyleLink>
     </Signup>
   );

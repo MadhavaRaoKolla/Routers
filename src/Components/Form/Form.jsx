@@ -12,15 +12,15 @@ import {
   collection,
   deleteDoc,
 } from "firebase/firestore";
+import { onAuthStateChanged } from "firebase/auth";
 
 const Form = () => {
   const { user } = useContext(AuthContext);
   const [data, setData] = useState([]);
   const [editId, setEditId] = useState(null);
-  const [search, setSearch] = useState(""); //input field
-  const [filter, setFilter] = useState(""); //dropdown
-  const [sort, setSort] = useState(""); //sorting
-
+  const [search, setSearch] = useState(""); // input field
+  const [filter, setFilter] = useState(""); // dropdown
+  const [sort, setSort] = useState(""); // sorting
   const [formData, setFormData] = useState({
     firstname: "",
     lastname: "",
@@ -29,10 +29,18 @@ const Form = () => {
     about: "",
   });
 
-  //fetching data to display in the same page
   useEffect(() => {
-    const fetchData = async () => {
-      if (auth.currentUser) {
+    const fetchingCards = onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser) {
+        fetchData();
+      }
+    });
+    return () => fetchingCards();
+  }, [user]);
+
+  const fetchData = async () => {
+    if (auth.currentUser) {
+      try {
         const querySnapshot = await getDocs(collection(db, "Forms"));
         const formsData = [];
         querySnapshot.forEach((doc) => {
@@ -40,19 +48,16 @@ const Form = () => {
         });
         if (user.role === "User") {
           setData(
-            formsData.filter((item) => {
-              return item.uid === auth.currentUser.uid;
-            })
+            formsData.filter((item) => item.uid === auth.currentUser.uid)
           );
         } else {
           setData(formsData);
         }
+      } catch (err) {
+        console.error("Error fetching data:", err);
       }
-    };
-    if (user) {
-      fetchData();
     }
-  }, [user]);
+  };
 
   const handleChange = (e) => {
     setFormData({
@@ -80,14 +85,12 @@ const Form = () => {
     e.preventDefault();
     if (!user) return;
     try {
-      //updates if edit id exists
       if (editId) {
         await setDoc(doc(db, "Forms", editId), {
           ...formData,
           uid: auth.currentUser.uid,
         });
       } else {
-        //adds new item
         await addDoc(collection(db, "Forms"), {
           ...formData,
           uid: auth.currentUser.uid,
@@ -101,6 +104,7 @@ const Form = () => {
         about: "",
       });
       setEditId(null);
+      fetchData();
     } catch (err) {
       console.log("Error:", err);
     }
